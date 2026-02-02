@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PitchFit – Know if your pitch is ready</title>
+  <meta name="description" content="PitchFit analyzes your pitch like a VC would, so you don't burn your best intros. Get actionable feedback in minutes.">
+  <meta property="og:title" content="PitchFit – Know if your pitch is ready">
+  <meta property="og:description" content="Get VC-quality feedback on your pitch before you walk into the room.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PitchFit – Know if your pitch is ready">
+  <meta name="twitter:description" content="Get VC-quality feedback on your pitch before you walk into the room.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --neutral-50: #fafafa;
+      --neutral-100: #f5f5f5;
+      --neutral-200: #e5e5e5;
+      --neutral-300: #d4d4d4;
+      --neutral-400: #a3a3a3;
+      --neutral-500: #737373;
+      --neutral-600: #525252;
+      --neutral-700: #404040;
+      --neutral-800: #262626;
+      --neutral-900: #171717;
+      --white: #ffffff;
+      
+      /* Brand colors */
+      --blue: #0066FF;
+      --blue-hover: #0052cc;
+      --blue-active: #0047b3;
+      --amber: #F59E0B;
+
+      /* Locked type scale */
+      --text-xs: 12px;
+      --text-sm: 14px;
+      --text-base: 16px;
+      --text-lg: 18px;
+      --text-xl: 24px;
+      --text-2xl: 32px;
+      --text-3xl: 40px;
+      --text-4xl: 52px;
+
+      /* Locked radius scale */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+
+      /* Locked spacing */
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 40px;
+      --space-6: 48px;
+      --space-8: 64px;
+      --space-10: 80px;
+      --space-12: 96px;
+      --space-15: 120px;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Figtree', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--neutral-900);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes fadeInBlur {
+      0% {
+        opacity: 0;
+        filter: blur(12px);
+        transform: translateY(12px);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(24px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-fade-in-blur {
+      animation: fadeInBlur 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .animate-fade-in-right {
+      animation: fadeInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.5s; }
+    .delay-4 { animation-delay: 0.7s; }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-weight: 600;
+      font-size: var(--text-lg);
+      color: var(--neutral-900);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-icon {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .nav-sign-in {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--neutral-600);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-sign-in:hover {
+      color: var(--neutral-900);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px var(--space-3);
+      background: var(--blue);
+      color: var(--white);
+      font-size: var(--text-base);
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-hover);
+    }
+
+    .nav-cta:active {
+      background: var(--blue-active);
+    }
+
+    /* Buttons - Unified system */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-2) var(--space-3);
+      background: var(--blue);
+      color: var(--white);
+      font-size: var(--text-base);
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      background: var(--blue-active);
+      transform: translateY(0);
+    }
+
+    .btn-primary-large {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-lg);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-2) var(--space-3);
+      background: var(--white);
+      color: var(--neutral-900);
+      font-size: var(--text-base);
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--neutral-300);
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--neutral-900);
+      background: var(--neutral-50);
+    }
+
+    .btn-secondary:active {
+      background: var(--neutral-100);
+    }
+
+    .btn-secondary svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Hero - Text Left, Image Right */
+    .hero {
+      position: relative;
+      padding: var(--space-15) var(--space-3) var(--space-8);
+      margin-top: 64px;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .hero-text {
+      max-width: 540px;
+    }
+
+    .hero h1 {
+      font-size: var(--text-4xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--neutral-900);
+      margin-bottom: var(--space-3);
+      text-wrap: balance;
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+      color: var(--neutral-600);
+      margin-bottom: var(--space-4);
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      align-items: flex-start;
+    }
+
+    .hero-proof {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+    }
+
+    /* Hero Image - Lighter shadow */
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--neutral-200);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .hero-product-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Placeholder - Marketing-optimized layout */
+    .hero-image-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--neutral-50) 0%, var(--white) 100%);
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-5);
+    }
+
+    .placeholder-header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .placeholder-score-block {
+      text-align: center;
+    }
+
+    .placeholder-score {
+      font-size: 80px;
+      font-weight: 600;
+      color: var(--neutral-900);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .placeholder-score-label {
+      font-size: var(--text-xs);
+      color: var(--neutral-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: var(--space-1);
+    }
+
+    .placeholder-verdict-block {
+      flex: 1;
+      padding-top: var(--space-1);
+    }
+
+    .placeholder-verdict {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--neutral-900);
+      margin-bottom: 4px;
+    }
+
+    .placeholder-verdict-detail {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+      line-height: 1.4;
+    }
+
+    .placeholder-dimensions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .placeholder-dimension {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .placeholder-dimension-label {
+      font-size: var(--text-sm);
+      color: var(--neutral-600);
+      width: 72px;
+      flex-shrink: 0;
+    }
+
+    .placeholder-dimension-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--neutral-200);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .placeholder-dimension-fill {
+      height: 100%;
+      background: var(--neutral-500);
+      border-radius: 4px;
+    }
+
+    .placeholder-dimension-fill-blue {
+      background: var(--blue);
+    }
+
+    .placeholder-dimension-fill-amber {
+      background: var(--amber);
+    }
+
+    .placeholder-dimension-score {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--neutral-700);
+      width: 32px;
+      text-align: right;
+    }
+
+    .placeholder-dimension-score-blue {
+      color: var(--blue);
+    }
+
+    .placeholder-dimension-score-amber {
+      color: var(--amber);
+    }
+
+    /* Dimension count indicator */
+    .placeholder-dimensions-more {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding-top: var(--space-1);
+    }
+
+    .placeholder-more-label {
+      font-size: var(--text-sm);
+      color: var(--neutral-400);
+      width: 72px;
+      flex-shrink: 0;
+    }
+
+    .placeholder-more-dots {
+      flex: 1;
+      display: flex;
+      gap: 6px;
+    }
+
+    .placeholder-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--neutral-300);
+      border-radius: 50%;
+    }
+
+    .placeholder-more-count {
+      font-size: var(--text-sm);
+      color: var(--neutral-400);
+      width: 32px;
+      text-align: right;
+    }
+
+    /* Feedback Preview Section */
+    .feedback-preview {
+      padding: var(--space-12) var(--space-3);
+      background: var(--neutral-50);
+    }
+
+    .feedback-preview-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .feedback-preview-header {
+      text-align: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .feedback-preview-title {
+      font-size: var(--text-xl);
+      font-weight: 500;
+      color: var(--neutral-900);
+      margin-bottom: var(--space-1);
+      text-wrap: balance;
+    }
+
+    .feedback-preview-subtitle {
+      font-size: var(--text-base);
+      color: var(--neutral-500);
+    }
+
+    .feedback-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: var(--space-4);
+    }
+
+    .feedback-tab {
+      padding: 8px 12px;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--neutral-500);
+      background: transparent;
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .feedback-tab:hover {
+      color: var(--neutral-700);
+      border-color: var(--neutral-300);
+    }
+
+    .feedback-tab.active {
+      color: var(--neutral-900);
+      background: var(--white);
+      border-color: var(--neutral-900);
+    }
+
+    .feedback-panel {
+      display: none;
+    }
+
+    .feedback-panel.active {
+      display: block;
+    }
+
+    .feedback-dimension-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-1);
+    }
+
+    .feedback-dimension-title {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--neutral-900);
+    }
+
+    .feedback-dimension-score {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--neutral-700);
+      background: var(--neutral-100);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .feedback-dimension-summary {
+      font-size: var(--text-base);
+      color: var(--neutral-500);
+      margin-bottom: var(--space-4);
+    }
+
+    .feedback-section-label {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--neutral-500);
+      margin-bottom: var(--space-2);
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .feedback-section-label svg {
+      width: 16px;
+      height: 16px;
+      color: var(--neutral-400);
+    }
+
+    .feedback-cards {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .feedback-cards:last-child {
+      margin-bottom: 0;
+    }
+
+    .feedback-more-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      padding-top: var(--space-3);
+      margin-top: var(--space-2);
+      border-top: 1px dashed var(--neutral-200);
+      font-size: var(--text-sm);
+      color: var(--neutral-400);
+    }
+
+    .feedback-more-hint svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .feedback-rec-card {
+      background: var(--white);
+      border: 1px solid var(--neutral-200);
+      border-left: 3px solid var(--neutral-300);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3);
+    }
+
+    .feedback-rec-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-2);
+      margin-bottom: 4px;
+    }
+
+    .feedback-rec-title {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--neutral-900);
+    }
+
+    .feedback-rec-score {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--neutral-500);
+      flex-shrink: 0;
+    }
+
+    .feedback-rec-body {
+      font-size: var(--text-base);
+      color: var(--neutral-600);
+      line-height: 1.5;
+    }
+
+    .feedback-preview-cta {
+      text-align: center;
+      margin-top: var(--space-5);
+    }
+
+    /* How It Works */
+    .how-it-works {
+      padding: var(--space-12) var(--space-3);
+      background: var(--white);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--neutral-900);
+      text-wrap: balance;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      max-width: 1000px;
+      margin: 0 auto var(--space-8);
+    }
+
+    .step {
+      padding: var(--space-3);
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: calc(var(--space-4) / -2 - 4px);
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid var(--neutral-300);
+      border-right: 2px solid var(--neutral-300);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .step-header {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-1);
+      margin-bottom: var(--space-1);
+    }
+
+    .step-number {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--neutral-400);
+    }
+
+    .step-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--neutral-900);
+    }
+
+    .step-description {
+      font-size: var(--text-base);
+      color: var(--neutral-600);
+      line-height: 1.6;
+    }
+
+    .cta-center {
+      text-align: center;
+    }
+
+    .cta-subtext {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+      margin-top: var(--space-2);
+    }
+
+    /* Social Proof */
+    .social-proof {
+      padding: var(--space-12) var(--space-3);
+      background: var(--neutral-900);
+    }
+
+    .social-proof .section-title {
+      color: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      max-width: 1000px;
+      margin: 0 auto var(--space-8);
+      align-items: stretch;
+    }
+
+    .testimonial {
+      background: var(--neutral-800);
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+    }
+
+    .testimonial-featured {
+      background: var(--neutral-800);
+      border: 1px solid var(--neutral-600);
+    }
+
+    .testimonial-quote {
+      font-size: var(--text-base);
+      font-style: italic;
+      color: var(--neutral-200);
+      margin-bottom: var(--space-2);
+      line-height: 1.6;
+    }
+
+    .testimonial-result {
+      font-size: var(--text-sm);
+      color: var(--neutral-400);
+      padding-top: var(--space-2);
+      margin-bottom: var(--space-2);
+      border-top: 1px solid var(--neutral-700);
+    }
+
+    .testimonial-featured .testimonial-result {
+      font-size: var(--text-base);
+      font-weight: 500;
+      color: var(--neutral-200);
+    }
+
+    .testimonial-author {
+      font-size: var(--text-sm);
+      color: var(--neutral-400);
+    }
+
+    .testimonial-author strong {
+      color: var(--neutral-200);
+      font-weight: 500;
+    }
+
+    /* Logo Bar */
+    .logo-bar-section {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .logo-bar-label {
+      font-size: var(--text-sm);
+      color: var(--neutral-400);
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .logo-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-6);
+    }
+
+    .logo-placeholder {
+      height: 32px;
+      background: var(--neutral-700);
+      border-radius: 4px;
+    }
+
+    /* Pricing */
+    .pricing {
+      padding: var(--space-12) var(--space-3);
+      background: var(--neutral-50);
+    }
+
+    .pricing-card {
+      max-width: 420px;
+      margin: 0 auto;
+      border: 1px solid var(--neutral-300);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      text-align: center;
+      background: var(--white);
+    }
+
+    .pricing-label {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--neutral-600);
+      margin-bottom: var(--space-1);
+    }
+
+    .pricing-price {
+      font-size: var(--text-4xl);
+      font-weight: 600;
+      color: var(--neutral-900);
+      line-height: 1;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Pricing features - clean list */
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      max-width: 280px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .pricing-features li {
+      font-size: var(--text-base);
+      color: var(--neutral-700);
+      padding: var(--space-1) 0;
+      border-bottom: 1px solid var(--neutral-100);
+    }
+
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-cta {
+      margin-bottom: var(--space-2);
+    }
+
+    .pricing-cta .btn-primary {
+      width: 100%;
+    }
+
+    .pricing-note {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+    }
+
+    .pricing-founding {
+      font-size: var(--text-sm);
+      color: var(--amber);
+      margin-top: var(--space-2);
+    }
+
+    /* FAQ Section */
+    .faq {
+      padding: var(--space-12) var(--space-3);
+      background: var(--white);
+    }
+
+    .faq-container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) 0;
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--neutral-900);
+      cursor: pointer;
+      list-style: none;
+      transition: color 0.2s ease;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::marker {
+      display: none;
+    }
+
+    .faq-item summary:hover {
+      color: var(--neutral-600);
+    }
+
+    .faq-item summary:focus {
+      outline: 2px solid var(--neutral-900);
+      outline-offset: 2px;
+    }
+
+    .faq-item summary:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .faq-item summary .faq-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--neutral-400);
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item[open] summary .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      font-size: var(--text-base);
+      color: var(--neutral-600);
+      line-height: 1.6;
+      padding-bottom: var(--space-3);
+      max-width: 600px;
+    }
+
+    .faq-answer p {
+      margin-bottom: var(--space-2);
+    }
+
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      padding: var(--space-15) var(--space-3);
+      background: var(--neutral-50);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      max-width: 560px;
+      margin: 0 auto var(--space-4);
+      color: var(--neutral-900);
+      text-wrap: balance;
+    }
+
+    .final-cta-primary {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--neutral-900);
+      padding: var(--space-4) var(--space-3);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copyright {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    .footer-links a {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--neutral-300);
+    }
+
+    @media (max-width: 600px) {
+      .footer-inner {
+        flex-direction: column;
+        gap: var(--space-2);
+        text-align: center;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        padding: var(--space-10) var(--space-3) var(--space-8);
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+
+      .hero-text {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: var(--text-3xl);
+      }
+
+      .hero-cta-group {
+        align-items: center;
+      }
+
+      .hero-proof {
+        text-align: center;
+      }
+
+      .hero-image-wrapper {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .placeholder-score {
+        font-size: 64px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+      }
+
+      .step {
+        padding: var(--space-2);
+      }
+
+      .step:not(:last-child)::after {
+        display: none;
+      }
+
+      .testimonials-grid {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .testimonial-featured {
+        order: -1;
+      }
+
+      .logo-bar {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-3);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <svg class="logo-icon" viewBox="0 0 91 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.69646 92.1619L36.0979 92.1619C37.1055 92.1619 38.121 91.6694 38.8928 90.6853L71.0343 49.6518C71.8076 48.6677 72.1935 47.3753 72.1935 46.084C72.1935 44.7917 71.8076 43.4922 71.0343 42.5102L38.8928 1.47767C38.121 0.492557 37.1048 1.62427e-06 36.0979 1.663e-06L3.69646 4.7863e-06C1.65567 4.8648e-06 1.22396e-05 2.1126 1.21611e-05 4.71673L1.17283e-05 19.0787C1.17014e-05 19.9729 0.299651 20.8414 0.85108 21.5453L17.2732 42.5102C18.0465 43.4922 18.4324 44.7917 18.4324 46.084C18.4324 47.3753 18.0465 48.6677 17.2732 49.6518L0.851047 70.6172C0.299637 71.3212 1.0128e-05 72.1896 1.0101e-05 73.0838L9.66837e-06 87.4431C-0.000740426 90.0483 1.65492 92.1619 3.69646 92.1619Z" fill="#F59E0B"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M21.6965 92.1619L54.0979 92.1619C55.1055 92.1619 56.121 91.6694 56.8928 90.6853L89.0343 49.6518C89.8076 48.6677 90.1935 47.3753 90.1935 46.084C90.1935 44.7917 89.8076 43.4922 89.0343 42.5102L56.8928 1.47767C56.121 0.492557 55.1048 1.62427e-06 54.0979 1.663e-06L21.6965 4.7863e-06C19.6557 4.8648e-06 18 2.1126 18 4.71673L18 19.0787C18 19.9729 18.2997 20.8414 18.8511 21.5453L35.2732 42.5102C36.0465 43.4922 36.4324 44.7917 36.4324 46.084C36.4324 47.3753 36.0465 48.6677 35.2732 49.6518L18.851 70.6172C18.2996 71.3212 18 72.1896 18 73.0838L18 87.4431C17.9993 90.0483 19.6549 92.1619 21.6965 92.1619Z" fill="#0066FF"/>
+        </svg>
+        PitchFit
+      </a>
+      <div class="nav-actions">
+        <a href="#" class="nav-sign-in">Sign in</a>
+        <a href="#pricing" class="nav-cta">Analyze My Pitch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1 class="animate-fade-in-blur delay-1">Investors know exactly why they pass. Now you can too.</h1>
+        <p class="hero-subtitle animate-fade-in-blur delay-2">PitchFit is the pitch analyst for pre-seed founders, built on patterns from hundreds of VC partner meetings. Fix what's costing you term sheets before you burn your best intros.</p>
+        <div class="hero-cta-group animate-fade-in-blur delay-3">
+          <a href="#pricing" class="btn-primary btn-primary-large">Analyze My Pitch</a>
+          <p class="hero-proof">Full analysis in minutes · $49</p>
+        </div>
+      </div>
+
+      <div class="hero-image animate-fade-in-right delay-4">
+        <div class="hero-image-wrapper">
+          <!-- 
+            REPLACE THIS PLACEHOLDER WITH YOUR CROPPED PRODUCT IMAGE:
+            <img src="your-analysis-crop.png" alt="PitchFit analysis showing score and dimensional breakdown" class="hero-product-image">
+          -->
+          <div class="hero-image-placeholder">
+            <div class="placeholder-header">
+              <div class="placeholder-score-block">
+                <div class="placeholder-score">6.8</div>
+                <div class="placeholder-score-label">Readiness score</div>
+              </div>
+              <div class="placeholder-verdict-block">
+                <div class="placeholder-verdict">Above average</div>
+                <div class="placeholder-verdict-detail">Your pitch meets basic investor expectations. Address 2 gaps to reach "ready" status.</div>
+              </div>
+            </div>
+            <div class="placeholder-dimensions">
+              <div class="placeholder-dimension">
+                <span class="placeholder-dimension-label">Team</span>
+                <div class="placeholder-dimension-bar">
+                  <div class="placeholder-dimension-fill placeholder-dimension-fill-blue" style="width: 81%;"></div>
+                </div>
+                <span class="placeholder-dimension-score placeholder-dimension-score-blue">8.1</span>
+              </div>
+              <div class="placeholder-dimension">
+                <span class="placeholder-dimension-label">Market</span>
+                <div class="placeholder-dimension-bar">
+                  <div class="placeholder-dimension-fill placeholder-dimension-fill-blue" style="width: 72%;"></div>
+                </div>
+                <span class="placeholder-dimension-score placeholder-dimension-score-blue">7.2</span>
+              </div>
+              <div class="placeholder-dimension">
+                <span class="placeholder-dimension-label">Traction</span>
+                <div class="placeholder-dimension-bar">
+                  <div class="placeholder-dimension-fill placeholder-dimension-fill-amber" style="width: 68%;"></div>
+                </div>
+                <span class="placeholder-dimension-score placeholder-dimension-score-amber">6.8</span>
+              </div>
+              <div class="placeholder-dimension">
+                <span class="placeholder-dimension-label">Delivery</span>
+                <div class="placeholder-dimension-bar">
+                  <div class="placeholder-dimension-fill placeholder-dimension-fill-amber" style="width: 52%;"></div>
+                </div>
+                <span class="placeholder-dimension-score placeholder-dimension-score-amber">5.2</span>
+              </div>
+              <div class="placeholder-dimensions-more">
+                <span class="placeholder-more-label"></span>
+                <div class="placeholder-more-dots">
+                  <span class="placeholder-dot"></span>
+                  <span class="placeholder-dot"></span>
+                  <span class="placeholder-dot"></span>
+                  <span class="placeholder-dot"></span>
+                </div>
+                <span class="placeholder-more-count">+4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback Preview -->
+  <section class="feedback-preview">
+    <div class="feedback-preview-container">
+      <div class="feedback-preview-header">
+        <h2 class="feedback-preview-title">See what investors see.</h2>
+        <p class="feedback-preview-subtitle">Slide by slide, claim by claim. With specific fixes for what needs work.</p>
+      </div>
+
+      <div class="feedback-tabs" role="tablist">
+        <button class="feedback-tab active" role="tab" aria-selected="true" data-tab="problem-solution">Problem-Solution</button>
+        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="market">Market</button>
+        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="business-model">Business Model</button>
+        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="team">Team</button>
+        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="traction">Traction</button>
+        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="financials">Financials</button>
+        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="visuals">Visuals</button>
+        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="delivery">Delivery</button>
+      </div>
+
+      <div class="feedback-panel active" data-panel="problem-solution">
+        <div class="feedback-dimension-header">
+          <h3 class="feedback-dimension-title">Problem-Solution Fit</h3>
+          <span class="feedback-dimension-score">7.4</span>
+        </div>
+        <p class="feedback-dimension-summary">Strong problem identification with room to strengthen solution specificity.</p>
+        
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Strengths
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Problem Definition Clarity</span>
+              <span class="feedback-rec-score">8.6</span>
+            </div>
+            <p class="feedback-rec-body">Ember's pain point is specific and quantified: independent restaurants lose 4-10% of revenue to food waste. Your personal restaurant experience makes this viscerally credible.</p>
+          </div>
+        </div>
+
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+          Recommendations
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Solution Validation</span>
+              <span class="feedback-rec-score">6.4</span>
+            </div>
+            <p class="feedback-rec-body">You've validated the problem extensively, but evidence that Ember's specific approach resolves it is thin. Pilot results or before/after metrics would strengthen this.</p>
+          </div>
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Unique Value Proposition</span>
+              <span class="feedback-rec-score">6.8</span>
+            </div>
+            <p class="feedback-rec-body">How is Ember different from MarketMan or BlueCart? Your positioning against existing tools needs sharper differentiation beyond "built by a restaurant owner."</p>
+          </div>
+        </div>
+
+        <div class="feedback-more-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          2 more criteria evaluated in full analysis
+        </div>
+      </div>
+
+      <div class="feedback-panel" data-panel="market">
+        <div class="feedback-dimension-header">
+          <h3 class="feedback-dimension-title">Market Opportunity</h3>
+          <span class="feedback-dimension-score">5.8</span>
+        </div>
+        <p class="feedback-dimension-summary">Market sizing needs bottoms-up validation to build investor confidence.</p>
+        
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Strengths
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Market Growth Potential</span>
+              <span class="feedback-rec-score">7.2</span>
+            </div>
+            <p class="feedback-rec-body">Restaurant tech adoption is accelerating post-pandemic. Your timing narrative around labor shortages forcing automation is credible and well-documented.</p>
+          </div>
+        </div>
+
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+          Recommendations
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">TAM/SAM/SOM Analysis</span>
+              <span class="feedback-rec-score">4.9</span>
+            </div>
+            <p class="feedback-rec-body">The $12B restaurant software TAM cites an IBISWorld report. Investors want your math: 660K US independent restaurants × $200/mo × 12 = what addressable number for Ember specifically?</p>
+          </div>
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Competitive Landscape</span>
+              <span class="feedback-rec-score">5.4</span>
+            </div>
+            <p class="feedback-rec-body">MarketMan, BlueCart, and Toast all play in adjacent spaces. Your competitive matrix exists but doesn't explain why Ember wins against well-funded incumbents.</p>
+          </div>
+        </div>
+
+        <div class="feedback-more-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          2 more criteria evaluated in full analysis
+        </div>
+      </div>
+
+      <div class="feedback-panel" data-panel="business-model">
+        <div class="feedback-dimension-header">
+          <h3 class="feedback-dimension-title">Business Model Viability</h3>
+          <span class="feedback-dimension-score">5.9</span>
+        </div>
+        <p class="feedback-dimension-summary">Clear revenue model with gaps in unit economics understanding.</p>
+        
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Strengths
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Revenue Model Clarity</span>
+              <span class="feedback-rec-score">7.4</span>
+            </div>
+            <p class="feedback-rec-body">Ember's $149/month SaaS model with annual discount is clearly articulated. Investors understand this path to recurring revenue immediately.</p>
+          </div>
+        </div>
+
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+          Recommendations
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Unit Economics</span>
+              <span class="feedback-rec-score">4.8</span>
+            </div>
+            <p class="feedback-rec-body">No mention of CAC, LTV, or payback period. Even rough estimates show investors you understand the economics of scaling Ember.</p>
+          </div>
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Scalability</span>
+              <span class="feedback-rec-score">5.6</span>
+            </div>
+            <p class="feedback-rec-body">How does Ember's cost structure change at 100 vs 1,000 vs 10,000 restaurants? Show that growth doesn't require proportional cost increases.</p>
+          </div>
+        </div>
+
+        <div class="feedback-more-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          2 more criteria evaluated in full analysis
+        </div>
+      </div>
+
+      <div class="feedback-panel" data-panel="team">
+        <div class="feedback-dimension-header">
+          <h3 class="feedback-dimension-title">Team Credibility</h3>
+          <span class="feedback-dimension-score">8.1</span>
+        </div>
+        <p class="feedback-dimension-summary">Exceptional founder-market fit with authentic problem understanding.</p>
+        
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Strengths
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Relevant Experience</span>
+              <span class="feedback-rec-score">8.9</span>
+            </div>
+            <p class="feedback-rec-body">Running a restaurant that failed partly due to inventory waste, then validating Ember door-to-door with 40+ owners—this is rare, authentic founder-market fit.</p>
+          </div>
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Complementary Skills</span>
+              <span class="feedback-rec-score">8.4</span>
+            </div>
+            <p class="feedback-rec-body">Operations expertise paired with your co-founder's ML background covers both sides of a predictive inventory product effectively.</p>
+          </div>
+        </div>
+
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+          Recommendations
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Advisory Support</span>
+              <span class="feedback-rec-score">6.8</span>
+            </div>
+            <p class="feedback-rec-body">No advisors mentioned. A restaurant group operator or Toast/Square alumni would add credibility and open distribution channels.</p>
+          </div>
+        </div>
+
+        <div class="feedback-more-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          2 more criteria evaluated in full analysis
+        </div>
+      </div>
+
+      <div class="feedback-panel" data-panel="traction">
+        <div class="feedback-dimension-header">
+          <h3 class="feedback-dimension-title">Traction Evidence</h3>
+          <span class="feedback-dimension-score">5.4</span>
+        </div>
+        <p class="feedback-dimension-summary">Strong customer discovery but commercial validation is thin.</p>
+        
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Strengths
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Customer Validation</span>
+              <span class="feedback-rec-score">7.1</span>
+            </div>
+            <p class="feedback-rec-body">40+ customer interviews with documented pain points. Three restaurants actively testing the beta. This groundwork demonstrates commitment to understanding the market.</p>
+          </div>
+        </div>
+
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+          Recommendations
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Revenue Growth</span>
+              <span class="feedback-rec-score">4.2</span>
+            </div>
+            <p class="feedback-rec-body">"Strong early interest" is too vague. Even $500/month from pilot customers or signed LOIs would dramatically strengthen Ember's traction story.</p>
+          </div>
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Market Response</span>
+              <span class="feedback-rec-score">5.1</span>
+            </div>
+            <p class="feedback-rec-body">No testimonials, case studies, or quantified results from beta users. "Restaurant X reduced waste by Y%" would be powerful proof.</p>
+          </div>
+        </div>
+
+        <div class="feedback-more-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          2 more criteria evaluated in full analysis
+        </div>
+      </div>
+
+      <div class="feedback-panel" data-panel="financials">
+        <div class="feedback-dimension-header">
+          <h3 class="feedback-dimension-title">Financial Projections</h3>
+          <span class="feedback-dimension-score">4.8</span>
+        </div>
+        <p class="feedback-dimension-summary">Weak financial modeling requiring significant development for investor credibility.</p>
+        
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Strengths
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Capital Efficiency</span>
+              <span class="feedback-rec-score">6.2</span>
+            </div>
+            <p class="feedback-rec-body">Clear understanding of Ember's $8K/month burn rate and 18-month runway target. This basic financial discipline is a positive signal at pre-seed.</p>
+          </div>
+        </div>
+
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+          Recommendations
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Model Quality</span>
+              <span class="feedback-rec-score">4.2</span>
+            </div>
+            <p class="feedback-rec-body">Revenue projections lack bottoms-up assumptions. Build models showing customer acquisition rates, churn, and expansion revenue for Ember specifically.</p>
+          </div>
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Funding Request Clarity</span>
+              <span class="feedback-rec-score">4.6</span>
+            </div>
+            <p class="feedback-rec-body">No clear ask amount or use of proceeds. "We're raising $500K to reach 50 paying restaurants" links capital to specific milestones investors can evaluate.</p>
+          </div>
+        </div>
+
+        <div class="feedback-more-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          2 more criteria evaluated in full analysis
+        </div>
+      </div>
+
+      <div class="feedback-panel" data-panel="visuals">
+        <div class="feedback-dimension-header">
+          <h3 class="feedback-dimension-title">Visual Design</h3>
+          <span class="feedback-dimension-score">7.6</span>
+        </div>
+        <p class="feedback-dimension-summary">Clean presentation that builds credibility through attention to detail.</p>
+        
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Strengths
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Information Architecture</span>
+              <span class="feedback-rec-score">8.2</span>
+            </div>
+            <p class="feedback-rec-body">Logical slide flow from problem → solution → market → team → ask. Transitions feel natural and the narrative builds momentum.</p>
+          </div>
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Design Consistency</span>
+              <span class="feedback-rec-score">7.8</span>
+            </div>
+            <p class="feedback-rec-body">Consistent color palette and spacing throughout Ember's deck. This looks like a company that pays attention to detail.</p>
+          </div>
+        </div>
+
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+          Recommendations
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Professional Polish</span>
+              <span class="feedback-rec-score">6.9</span>
+            </div>
+            <p class="feedback-rec-body">Three typefaces is one too many. Tighten to two (one for headlines, one for body) for a more polished, cohesive look.</p>
+          </div>
+        </div>
+
+        <div class="feedback-more-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          2 more criteria evaluated in full analysis
+        </div>
+      </div>
+
+      <div class="feedback-panel" data-panel="delivery">
+        <div class="feedback-dimension-header">
+          <h3 class="feedback-dimension-title">Delivery Excellence</h3>
+          <span class="feedback-dimension-score">5.2</span>
+        </div>
+        <p class="feedback-dimension-summary">Strong narrative undermined by verbal delivery inconsistencies.</p>
+        
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Strengths
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Storytelling</span>
+              <span class="feedback-rec-score">7.8</span>
+            </div>
+            <p class="feedback-rec-body">Opening with your restaurant closure and the moment you realized inventory was killing margins—this personal narrative earns emotional investment immediately.</p>
+          </div>
+        </div>
+
+        <p class="feedback-section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+          Recommendations
+        </p>
+        <div class="feedback-cards">
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Filler Words</span>
+              <span class="feedback-rec-score">4.2</span>
+            </div>
+            <p class="feedback-rec-body">"Um" and "like" appear 23 times in 4 minutes (5.75/min), well above the 1-2/min acceptable threshold. Most occur during competitive landscape—practice this section.</p>
+          </div>
+          <div class="feedback-rec-card">
+            <div class="feedback-rec-header">
+              <span class="feedback-rec-title">Vocal Delivery</span>
+              <span class="feedback-rec-score">5.4</span>
+            </div>
+            <p class="feedback-rec-body">Speaking pace drops from 155 WPM in opening to 128 WPM during financials. Maintain energy through the ask—this is where you close.</p>
+          </div>
+        </div>
+
+        <div class="feedback-more-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          4 more criteria evaluated in full analysis
+        </div>
+      </div>
+
+      <div class="feedback-preview-cta">
+        <a href="#pricing" class="btn-secondary">
+          Get your analysis
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="section-header">
+      <h2 class="section-title">Upload. Analyze. Improve.</h2>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-header">
+          <span class="step-number">1.</span>
+          <h3 class="step-title">Upload your pitch</h3>
+        </div>
+        <p class="step-description">Record yourself delivering your pitch. Any length, any format, any stage of polish.</p>
+      </div>
+      <div class="step">
+        <div class="step-header">
+          <span class="step-number">2.</span>
+          <h3 class="step-title">Get your score</h3>
+        </div>
+        <p class="step-description">See exactly where investors will hesitate across 8 dimensions, with specific fixes for each.</p>
+      </div>
+      <div class="step">
+        <div class="step-header">
+          <span class="step-number">3.</span>
+          <h3 class="step-title">Improve and resubmit</h3>
+        </div>
+        <p class="step-description">Revise based on specific recommendations, upload again, and track your progress over time.</p>
+      </div>
+    </div>
+
+    <div class="cta-center">
+      <a href="#pricing" class="btn-primary">Analyze My Pitch</a>
+      <p class="cta-subtext">You don't need a polished pitch. This is how you figure out what to work on.</p>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <div class="section-header">
+      <h2 class="section-title">Founders who fixed their pitch, then closed.</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial testimonial-featured">
+        <p class="testimonial-quote">"I didn't realize the severity of my content gaps until seeing an analysis like this."</p>
+        <p class="testimonial-result">Rewrote 3 slides, closed seed round 6 weeks later.</p>
+        <p class="testimonial-author"><strong>Timothy Philemon</strong>, Founder @ Cinefind</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-quote">"Clear, actionable, and more than I was expecting. This is the kind of feedback that sharpens the deck."</p>
+        <p class="testimonial-result">Went from 15% to 60% meeting-to-second-meeting rate.</p>
+        <p class="testimonial-author"><strong>James Marks</strong>, Founder @ Canopy.io</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-quote">"Honestly, I'm kind of blown away. The specifics within the recommendations are SO helpful."</p>
+        <p class="testimonial-result">Fixed market sizing in 20 minutes. VC called it "crisp."</p>
+        <p class="testimonial-author"><strong>Holly Sloofman</strong>, Founder @ Nectarine</p>
+      </div>
+    </div>
+
+    <div class="logo-bar-section">
+      <p class="logo-bar-label">Trusted by founders from</p>
+      <div class="logo-bar" role="list" aria-label="Companies whose founders use PitchFit">
+        <div class="logo-placeholder" role="listitem" aria-hidden="true"></div>
+        <div class="logo-placeholder" role="listitem" aria-hidden="true"></div>
+        <div class="logo-placeholder" role="listitem" aria-hidden="true"></div>
+        <div class="logo-placeholder" role="listitem" aria-hidden="true"></div>
+        <div class="logo-placeholder" role="listitem" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="section-header">
+      <h2 class="section-title">One analysis. No subscription required.</h2>
+    </div>
+
+    <div class="pricing-card">
+      <p class="pricing-label">Your first pitch analysis</p>
+      <p class="pricing-price">$49</p>
+
+      <ul class="pricing-features">
+        <li>Full 8-dimension breakdown</li>
+        <li>Slide-by-slide feedback</li>
+        <li>Actionable recommendations</li>
+        <li>Investor readiness score</li>
+      </ul>
+
+      <div class="pricing-cta">
+        <a href="#" class="btn-primary btn-primary-large">Get My Analysis</a>
+      </div>
+
+      <p class="pricing-note">Iterating? Additional analyses are $19 each.</p>
+      <p class="pricing-founding">Pro launching soon. Today's customers get founding member rates.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="faq-container">
+      <div class="section-header">
+        <h2 class="section-title">Questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>
+            Is this just ChatGPT analyzing my pitch?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>No. PitchFit is built on a proprietary evaluation framework trained on patterns from hundreds of real VC conversations. What investors actually say in partner meetings, not what they tell founders. Generic AI gives you generic feedback. PitchFit tells you where VCs will hesitate and why.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            How is this different from feedback from my mentor or accelerator?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Mentors give you their perspective. PitchFit gives you the aggregate perspective: patterns across how investors evaluate pre-seed pitches, what they flag in partner meetings, and what makes them pass. It also catches things mentors are too polite to say, or gaps they've become blind to because they know your story too well. Think of it as a second opinion before your high-stakes meetings.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            What happens to my pitch video?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Your video is stored securely so you can revisit it alongside your analysis. Useful when you're working through feedback slide by slide. We don't share it with anyone or use it to train models. Your fundraising strategy is your business.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            How long does the analysis take?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Most analyses complete in under 3 minutes. You'll get an email when your report is ready.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            What if I disagree with the feedback?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>You might. And that's useful.</p>
+            <p>PitchFit isn't here to pat you on the back. That doesn't help you raise. Pre-seed funding is more competitive than it was five years ago, and investors aren't softening their assessments. Neither do we.</p>
+            <p>Our feedback is direct, actionable, and scoped for where you actually are. We're not comparing you to Series B companies or expecting traction you can't have yet. But within what's reasonable for your stage, we'll tell you what's working and what isn't. Clearly.</p>
+            <p>If you disagree with a specific point, that's still valuable: it means you should have a ready answer when an investor raises the same concern. The goal isn't a perfect score. It's walking into your next meeting knowing exactly where pushback will come.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            Is this for pre-seed founders only?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>PitchFit is built for pre-seed founders preparing for institutional investor conversations. The evaluation framework, the feedback, and the benchmarks are all calibrated for this stage. Not Series A metrics you can't hit yet, and not angel/friends-and-family rounds where the bar is different.</p>
+            <p>If you're further along, the analysis may still be useful, but you're not who we built this for.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            Can I submit again after I revise my pitch?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Additional analyses are $19 each. Most founders submit 2–3 times as they refine their pitch.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            What if the analysis isn't useful?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>If you don't find the analysis actionable, email us within 7 days and tell us why. We'll refund you.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            What do I need to submit?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>A video of you pitching. This can be a recording of a live pitch, a Loom walking through your deck, or you presenting to camera. We analyze both your content and your delivery, so slides alone won't work.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <h2>Know where you stand before you walk in.</h2>
+    <div class="final-cta-primary">
+      <a href="#" class="btn-primary btn-primary-large">Analyze My Pitch</a>
+      <p class="cta-subtext">$49 · Full analysis in minutes</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copyright">© <span id="year"></span> PitchFit. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Feedback tabs
+    document.querySelectorAll('.feedback-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update tabs
+        document.querySelectorAll('.feedback-tab').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        
+        // Update panels
+        const targetPanel = tab.dataset.tab;
+        document.querySelectorAll('.feedback-panel').forEach(p => {
+          p.classList.remove('active');
+        });
+        document.querySelector(`[data-panel="${targetPanel}"]`).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
