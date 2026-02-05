@@ -552,7 +552,10 @@
     /* Feedback Preview Section */
     .feedback-preview {
       padding: var(--space-15) var(--space-3);
-      background: var(--neutral-50);
+      background:
+        linear-gradient(180deg, var(--white) 0%, transparent 80px),
+        linear-gradient(0deg, var(--white) 0%, transparent 80px),
+        var(--neutral-50);
     }
 
     .feedback-preview-container {
@@ -787,7 +790,7 @@
     }
 
     .social-proof .section-label {
-      color: var(--neutral-400);
+      color: var(--amber);
     }
 
     .section-title {
@@ -905,7 +908,7 @@
 
     .testimonials-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: var(--space-3);
       max-width: 1000px;
       margin: 0 auto var(--space-8);
@@ -953,17 +956,18 @@
     }
 
     .testimonial-avatar {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--amber) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      color: white;
+      overflow: hidden;
       flex-shrink: 0;
+      border: 2px solid var(--neutral-600);
+    }
+
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .testimonial-author-info strong {
@@ -980,8 +984,8 @@
     }
 
     .accelerator-proof p {
-      font-size: var(--text-sm);
-      color: var(--neutral-400);
+      font-size: var(--text-lg);
+      color: var(--neutral-300);
     }
 
     .accelerator-proof strong {
@@ -991,7 +995,10 @@
     /* Pricing */
     .pricing {
       padding: var(--space-15) var(--space-3);
-      background: var(--neutral-50);
+      background:
+        linear-gradient(180deg, var(--white) 0%, transparent 80px),
+        linear-gradient(0deg, var(--white) 0%, transparent 80px),
+        var(--neutral-50);
     }
 
     .pricing-card {
@@ -1113,6 +1120,14 @@
       margin: 0 auto;
     }
 
+    .faq-subtitle {
+      font-size: var(--text-base);
+      color: var(--neutral-500);
+      text-align: center;
+      margin-top: calc(-1 * var(--space-6));
+      margin-bottom: var(--space-8);
+    }
+
     .faq-list {
       display: flex;
       flex-direction: column;
@@ -1170,7 +1185,7 @@
     }
 
     .faq-item[open] summary .faq-icon {
-      transform: rotate(45deg);
+      transform: rotate(180deg);
     }
 
     .faq-answer {
@@ -1330,10 +1345,6 @@
       .testimonials-grid {
         display: flex;
         flex-direction: column;
-      }
-
-      .testimonial-featured {
-        order: -1;
       }
 
       .logo-bar {
@@ -1876,10 +1887,12 @@
     </div>
 
     <div class="testimonials-grid">
-      <div class="testimonial testimonial-featured">
+      <div class="testimonial">
         <p class="testimonial-quote">"I didn't realize the severity of my content gaps until seeing an analysis like this."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">TP</div>
+          <div class="testimonial-avatar">
+            <img src="images/tim_cinefind.jpeg" alt="Timothy Philemon">
+          </div>
           <div class="testimonial-author-info">
             <strong>Timothy Philemon</strong>
             Founder @ Cinefind
@@ -1889,27 +1902,31 @@
       <div class="testimonial">
         <p class="testimonial-quote">"Clear, actionable, and more than I was expecting. This is the kind of feedback that sharpens the deck."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">JM</div>
+          <div class="testimonial-avatar">
+            <img src="images/james_canopycloud.jpeg" alt="James Marks">
+          </div>
           <div class="testimonial-author-info">
             <strong>James Marks</strong>
-            Founder @ Canopy.io
+            Founder @ Canopycloud.io
           </div>
         </div>
       </div>
       <div class="testimonial">
         <p class="testimonial-quote">"Honestly, I'm kind of blown away. The specifics within the recommendations are SO helpful."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">HS</div>
+          <div class="testimonial-avatar">
+            <img src="images/holly_necterine.jpeg" alt="Holly Sloofman">
+          </div>
           <div class="testimonial-author-info">
             <strong>Holly Sloofman</strong>
-            Founder @ Nectarine
+            Founder @ Necterine
           </div>
         </div>
       </div>
     </div>
 
     <div class="accelerator-proof">
-      <p>Trusted by founders from <strong>YC</strong>, <strong>Techstars</strong>, <strong>500 Global</strong>, and <strong>50+ accelerators</strong></p>
+      <p>Join founders who refuse to burn their best intros</p>
     </div>
   </section>
 
@@ -1949,12 +1966,14 @@
         <h2 class="section-title">Questions</h2>
       </div>
 
+      <p class="faq-subtitle">Everything you need to know before you submit</p>
+
       <div class="faq-list">
         <details class="faq-item">
           <summary>
             Is this just ChatGPT analyzing my pitch?
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
           <div class="faq-answer">
@@ -1966,7 +1985,7 @@
           <summary>
             How is this different from feedback from my mentor or accelerator?
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
           <div class="faq-answer">
@@ -1978,7 +1997,7 @@
           <summary>
             What happens to my pitch video?
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
           <div class="faq-answer">
@@ -1990,7 +2009,7 @@
           <summary>
             How long does the analysis take?
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
           <div class="faq-answer">
@@ -2002,7 +2021,7 @@
           <summary>
             What if I disagree with the feedback?
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
           <div class="faq-answer">
@@ -2017,7 +2036,7 @@
           <summary>
             Is this for pre-seed founders only?
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
           <div class="faq-answer">
@@ -2030,7 +2049,7 @@
           <summary>
             Can I submit again after I revise my pitch?
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
           <div class="faq-answer">
@@ -2042,7 +2061,7 @@
           <summary>
             What do I need to submit?
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
           <div class="faq-answer">
