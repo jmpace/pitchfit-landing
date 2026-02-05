@@ -6,11 +6,11 @@
   <title>PitchFit – Know if your pitch is ready</title>
   <meta name="description" content="PitchFit analyzes your pre-seed pitch like a VC would, so you don't burn your best intros. Get actionable feedback in minutes.">
   <meta property="og:title" content="PitchFit – Know if your pitch is ready">
-  <meta property="og:description" content="Get VC-quality feedback on your pitch before you walk into the room.">
+  <meta property="og:description" content="Don't burn your best intros. Get VC-quality feedback on your pre-seed pitch in minutes.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PitchFit – Know if your pitch is ready">
-  <meta name="twitter:description" content="Get VC-quality feedback on your pitch before you walk into the room.">
+  <meta name="twitter:description" content="Don't burn your best intros. Get VC-quality feedback on your pre-seed pitch in minutes.">
   <meta name="twitter:image" content="https://getpitchfit.io/og-image.png">
   <meta property="og:image" content="https://getpitchfit.io/og-image.png">
   <meta property="og:url" content="https://getpitchfit.io">
@@ -770,6 +770,179 @@
       margin-top: var(--space-5);
     }
 
+    /* Bento Feedback Preview */
+    .bento-preview {
+      padding: var(--space-15) var(--space-3);
+      background: var(--neutral-50);
+    }
+
+    .bento-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: var(--white);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    /* Dimensions overview card - large, bottom left */
+    .bento-card-dimensions {
+      grid-column: span 2;
+      padding: var(--space-5);
+    }
+
+    .bento-dimensions-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
+    }
+
+    .bento-dimensions-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--neutral-900);
+    }
+
+    .bento-dimensions-score {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .bento-dimensions-score-value {
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      color: var(--neutral-900);
+    }
+
+    .bento-dimensions-score-label {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+    }
+
+    .bento-dimensions-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .bento-dimension-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 40px;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .bento-dimension-name {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--neutral-700);
+    }
+
+    .bento-dimension-bar {
+      height: 8px;
+      background: var(--neutral-100);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bento-dimension-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--neutral-900);
+      transition: width 0.3s ease;
+    }
+
+    .bento-dimension-score {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--neutral-600);
+      text-align: right;
+    }
+
+    /* Feedback cards - clean, minimal */
+    .bento-card-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--neutral-900);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .bento-card-body {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+      line-height: 1.6;
+    }
+
+    .bento-card-dimension {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--text-xs);
+      color: var(--neutral-400);
+      margin-top: var(--space-3);
+    }
+
+    .bento-card-score-badge {
+      font-weight: 600;
+      color: var(--neutral-900);
+    }
+
+    .bento-card-score-scale {
+      font-weight: 500;
+      color: var(--neutral-400);
+    }
+
+    .bento-more-text {
+      text-align: center;
+      margin-top: var(--space-5);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--neutral-500);
+    }
+
+    @media (max-width: 900px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bento-card-dimensions {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bento-card-dimensions {
+        grid-column: span 1;
+      }
+
+      .bento-dimension-row {
+        grid-template-columns: 100px 1fr 36px;
+      }
+    }
+
     /* How It Works */
     .how-it-works {
       padding: var(--space-15) var(--space-3);
@@ -919,14 +1092,16 @@
       background: var(--neutral-800);
       padding: var(--space-4);
       border-radius: var(--radius-md);
+      border: 1px solid var(--neutral-700);
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .testimonial:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+      border-color: var(--neutral-500);
     }
 
     .testimonial-featured {
@@ -1165,6 +1340,11 @@
 
     .faq-item summary:hover {
       color: var(--neutral-600);
+      background: var(--neutral-50);
+      margin: 0 calc(-1 * var(--space-2));
+      padding-left: var(--space-2);
+      padding-right: var(--space-2);
+      border-radius: var(--radius-sm);
     }
 
     .faq-item summary:focus {
@@ -1240,25 +1420,55 @@
     .final-cta .btn-primary-large {
       padding: 18px var(--space-5);
       font-size: var(--text-lg);
-      box-shadow: 0 4px 14px rgba(0,102,255,0.3);
+      box-shadow:
+        0 4px 14px rgba(0,102,255,0.35),
+        0 8px 24px rgba(0,102,255,0.2);
     }
 
     .final-cta .btn-primary-large:hover {
-      box-shadow: 0 6px 20px rgba(0,102,255,0.4);
+      box-shadow:
+        0 6px 20px rgba(0,102,255,0.45),
+        0 12px 32px rgba(0,102,255,0.25);
     }
 
     /* Footer */
     footer {
       background: var(--neutral-900);
-      padding: var(--space-4) var(--space-3);
+      padding: var(--space-6) var(--space-3);
+      border-top: 1px solid var(--neutral-800);
     }
 
     .footer-inner {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-logo {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .footer-tagline {
+      font-size: var(--text-sm);
+      color: var(--neutral-500);
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-2);
     }
 
     .footer-copyright {
@@ -1273,20 +1483,25 @@
 
     .footer-links a {
       font-size: var(--text-sm);
-      color: var(--neutral-500);
+      color: var(--neutral-400);
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
     .footer-links a:hover {
-      color: var(--neutral-300);
+      color: var(--white);
     }
 
     @media (max-width: 600px) {
       .footer-inner {
         flex-direction: column;
-        gap: var(--space-2);
+        align-items: center;
+        gap: var(--space-4);
         text-align: center;
+      }
+
+      .footer-right {
+        align-items: center;
       }
     }
 
@@ -1380,10 +1595,6 @@
         <p class="hero-subtitle animate-fade-in-blur delay-2">PitchFit is the pitch analyst for pre-seed founders, built on patterns from hundreds of VC partner meetings. Fix what's costing you term sheets before you burn your best intros.</p>
         <div class="hero-cta-group animate-fade-in-blur delay-3">
           <a href="#pricing" class="btn-primary btn-primary-large">Analyze My Pitch</a>
-          <p class="hero-proof">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            Full analysis in minutes · $49
-          </p>
         </div>
       </div>
 
@@ -1833,6 +2044,98 @@
     </div>
   </section>
 
+  <!-- Bento Feedback Preview (Alternative) -->
+  <section class="bento-preview">
+    <div class="bento-container">
+      <div class="section-header">
+        <span class="section-label">What you'll get</span>
+        <h2 class="section-title">See what investors see</h2>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Row 1: 3 feedback cards -->
+        <div class="bento-card">
+          <h3 class="bento-card-title">Founder-Market Fit</h3>
+          <p class="bento-card-body">Authentic problem understanding from running a restaurant that failed due to inventory waste.</p>
+          <p class="bento-card-dimension"><span class="bento-card-score-badge">8.9</span><span class="bento-card-score-scale">/10</span></p>
+        </div>
+
+        <div class="bento-card">
+          <h3 class="bento-card-title">Problem Clarity</h3>
+          <p class="bento-card-body">Pain point is specific and quantified: 4-10% of revenue lost to food waste.</p>
+          <p class="bento-card-dimension"><span class="bento-card-score-badge">8.6</span><span class="bento-card-score-scale">/10</span></p>
+        </div>
+
+        <div class="bento-card">
+          <h3 class="bento-card-title">Revenue Evidence</h3>
+          <p class="bento-card-body">"Strong early interest" is vague. Even $500/mo from pilots strengthens your story.</p>
+          <p class="bento-card-dimension"><span class="bento-card-score-badge">4.2</span><span class="bento-card-score-scale">/10</span></p>
+        </div>
+
+        <!-- Row 2: Dimensions overview (2 cols) + 1 feedback card -->
+        <div class="bento-card bento-card-dimensions">
+          <div class="bento-dimensions-header">
+            <h3 class="bento-dimensions-title">8-Dimension Breakdown</h3>
+            <div class="bento-dimensions-score">
+              <span class="bento-dimensions-score-value">6.8</span>
+              <span class="bento-dimensions-score-label">overall</span>
+            </div>
+          </div>
+          <div class="bento-dimensions-list">
+            <div class="bento-dimension-row">
+              <span class="bento-dimension-name">Team</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 81%"></div></div>
+              <span class="bento-dimension-score">8.1</span>
+            </div>
+            <div class="bento-dimension-row">
+              <span class="bento-dimension-name">Problem-Solution</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 74%"></div></div>
+              <span class="bento-dimension-score">7.4</span>
+            </div>
+            <div class="bento-dimension-row">
+              <span class="bento-dimension-name">Visuals</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 76%"></div></div>
+              <span class="bento-dimension-score">7.6</span>
+            </div>
+            <div class="bento-dimension-row">
+              <span class="bento-dimension-name">Business Model</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 59%"></div></div>
+              <span class="bento-dimension-score">5.9</span>
+            </div>
+            <div class="bento-dimension-row">
+              <span class="bento-dimension-name">Market</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 58%"></div></div>
+              <span class="bento-dimension-score">5.8</span>
+            </div>
+            <div class="bento-dimension-row">
+              <span class="bento-dimension-name">Traction</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 54%"></div></div>
+              <span class="bento-dimension-score">5.4</span>
+            </div>
+            <div class="bento-dimension-row">
+              <span class="bento-dimension-name">Delivery</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 52%"></div></div>
+              <span class="bento-dimension-score">5.2</span>
+            </div>
+            <div class="bento-dimension-row">
+              <span class="bento-dimension-name">Financials</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 48%"></div></div>
+              <span class="bento-dimension-score">4.8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <h3 class="bento-card-title">Market Sizing</h3>
+          <p class="bento-card-body">The $12B TAM cites IBISWorld. Investors want your math: how many restaurants × your price?</p>
+          <p class="bento-card-dimension"><span class="bento-card-score-badge">4.9</span><span class="bento-card-score-scale">/10</span></p>
+        </div>
+      </div>
+
+      <p class="bento-more-text">+42 more findings in full analysis</p>
+    </div>
+  </section>
+
   <!-- How It Works -->
   <section class="how-it-works">
     <div class="section-header">
@@ -1875,7 +2178,6 @@
 
     <div class="cta-center">
       <a href="#pricing" class="btn-primary btn-primary-large">Analyze My Pitch</a>
-      <p class="cta-subtext">You don't need a polished pitch. This is how you figure out what to work on.</p>
     </div>
   </section>
 
@@ -2068,6 +2370,18 @@
             <p>A video of you pitching. This can be a recording of a live pitch, a Loom walking through your deck, or you presenting to camera. We analyze both your content and your delivery, so slides alone won't work.</p>
           </div>
         </details>
+
+        <details class="faq-item">
+          <summary>
+            What if I'm not satisfied with the analysis?
+            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Email us. If PitchFit didn't deliver useful, actionable feedback on your pitch, we'll make it right. We're building this for founders who are serious about improving — not collecting $49 from people who feel burned.</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -2077,18 +2391,23 @@
     <h2>Know where you stand <span class="headline-emphasis">before you walk in.</span></h2>
     <div class="final-cta-primary">
       <a href="#" class="btn-primary btn-primary-large">Analyze My Pitch</a>
-      <p class="cta-subtext">$49 · Full analysis in minutes</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
     <div class="footer-inner">
-      <p class="footer-copyright">© <span id="year"></span> PitchFit. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Contact</a>
+      <div class="footer-brand">
+        <span class="footer-logo">PitchFit</span>
+        <p class="footer-tagline">Know if your pitch is ready.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+        <p class="footer-copyright">© <span id="year"></span> PitchFit. All rights reserved.</p>
       </div>
     </div>
   </footer>
