@@ -357,8 +357,17 @@
     }
 
     .hero-proof {
-      font-size: var(--text-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
       color: var(--neutral-500);
+    }
+
+    .hero-proof svg {
+      width: 16px;
+      height: 16px;
+      color: var(--neutral-400);
     }
 
     /* Hero Image */
@@ -428,6 +437,20 @@
     .hero-preview {
       padding: var(--space-4);
       background: linear-gradient(135deg, var(--neutral-50) 0%, var(--white) 100%);
+      position: relative;
+    }
+
+    .hero-preview-badge {
+      position: absolute;
+      top: var(--space-2);
+      right: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--blue);
+      background: rgba(0,102,255,0.08);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
     }
 
     .hero-preview-score {
@@ -543,9 +566,10 @@
     }
 
     .feedback-preview-title {
-      font-size: var(--text-3xl);
+      font-size: 48px;
       font-weight: 600;
-      letter-spacing: -0.03em;
+      line-height: 1.07;
+      letter-spacing: -0.04em;
       color: var(--neutral-900);
       margin-bottom: var(--space-1);
       text-wrap: balance;
@@ -655,12 +679,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-1);
-      padding-top: var(--space-3);
-      margin-top: var(--space-2);
-      border-top: 1px dashed var(--neutral-200);
+      gap: 6px;
+      width: fit-content;
+      margin: var(--space-3) auto 0;
+      padding: 10px 16px;
       font-size: var(--text-sm);
-      color: var(--neutral-400);
+      font-weight: 500;
+      color: var(--blue);
+      background: rgba(0,102,255,0.06);
+      border: 1px solid rgba(0,102,255,0.12);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .feedback-more-hint:hover {
+      background: rgba(0,102,255,0.1);
+      border-color: rgba(0,102,255,0.2);
     }
 
     .feedback-more-hint svg {
@@ -756,9 +791,10 @@
     }
 
     .section-title {
-      font-size: var(--text-3xl);
+      font-size: 48px;
       font-weight: 600;
-      letter-spacing: -0.03em;
+      line-height: 1.07;
+      letter-spacing: -0.04em;
       color: var(--neutral-900);
       text-wrap: balance;
     }
@@ -775,6 +811,18 @@
       padding: var(--space-3);
       position: relative;
       text-align: center;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 24px;
+      right: -18px;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%23a3a3a3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' /%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
     .step:not(:last-child)::after {
@@ -1252,7 +1300,7 @@
       }
 
       .hero-proof {
-        text-align: center;
+        justify-content: center;
       }
 
       .hero-image-wrapper {
@@ -1321,13 +1369,17 @@
         <p class="hero-subtitle animate-fade-in-blur delay-2">PitchFit is the pitch analyst for pre-seed founders, built on patterns from hundreds of VC partner meetings. Fix what's costing you term sheets before you burn your best intros.</p>
         <div class="hero-cta-group animate-fade-in-blur delay-3">
           <a href="#pricing" class="btn-primary btn-primary-large">Analyze My Pitch</a>
-          <p class="hero-proof">Full analysis in minutes · $49</p>
+          <p class="hero-proof">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Full analysis in minutes · $49
+          </p>
         </div>
       </div>
 
       <div class="hero-image animate-fade-in-right delay-4">
         <div class="hero-image-wrapper">
           <div class="hero-preview">
+            <span class="hero-preview-badge">Sample Analysis</span>
             <div class="hero-preview-score">
               <div class="hero-preview-score-value">6.8</div>
               <div class="hero-preview-score-meta">
@@ -1360,7 +1412,7 @@
   <section class="feedback-preview">
     <div class="feedback-preview-container">
       <div class="feedback-preview-header">
-        <h2 class="feedback-preview-title">See what investors see.</h2>
+        <h2 class="feedback-preview-title">See what investors see</h2>
         <p class="feedback-preview-subtitle">Your pitch evaluated across 8 dimensions — each one scored with specific fixes.</p>
       </div>
 
@@ -1820,7 +1872,7 @@
   <section class="social-proof">
     <div class="section-header">
       <span class="section-label">What people say</span>
-      <h2 class="section-title">Founders who walked in ready.</h2>
+      <h2 class="section-title">Founders who walked in ready</h2>
     </div>
 
     <div class="testimonials-grid">
@@ -1865,7 +1917,7 @@
   <section class="pricing" id="pricing">
     <div class="section-header">
       <span class="section-label">Pricing</span>
-      <h2 class="section-title">One analysis. No subscription required.</h2>
+      <h2 class="section-title">One analysis, no subscription</h2>
     </div>
 
     <div class="pricing-card">
