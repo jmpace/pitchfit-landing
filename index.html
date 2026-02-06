@@ -549,227 +549,6 @@
       font-weight: 500;
     }
 
-    /* Feedback Preview Section */
-    .feedback-preview {
-      padding: var(--space-15) var(--space-3);
-      background:
-        linear-gradient(180deg, var(--white) 0%, transparent 80px),
-        linear-gradient(0deg, var(--white) 0%, transparent 80px),
-        var(--neutral-50);
-    }
-
-    .feedback-preview-container {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .feedback-preview-header {
-      text-align: center;
-      margin-bottom: var(--space-6);
-    }
-
-    .feedback-preview-title {
-      font-size: 48px;
-      font-weight: 600;
-      line-height: 1.07;
-      letter-spacing: -0.04em;
-      color: var(--neutral-900);
-      margin-bottom: var(--space-1);
-      text-wrap: balance;
-    }
-
-    .feedback-preview-subtitle {
-      font-size: var(--text-base);
-      color: var(--neutral-500);
-    }
-
-    .feedback-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4px;
-      margin-bottom: var(--space-4);
-    }
-
-    .feedback-tab {
-      padding: 8px 12px;
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--neutral-500);
-      background: transparent;
-      border: 1px solid var(--neutral-200);
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .feedback-tab:hover {
-      color: var(--neutral-700);
-      border-color: var(--neutral-300);
-    }
-
-    .feedback-tab.active {
-      color: var(--blue);
-      background: var(--white);
-      border-color: var(--blue);
-      box-shadow: 0 2px 8px rgba(0,102,255,0.15);
-    }
-
-    .feedback-panel {
-      display: none;
-    }
-
-    .feedback-panel.active {
-      display: block;
-    }
-
-    .feedback-dimension-header {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-      margin-bottom: var(--space-1);
-    }
-
-    .feedback-dimension-title {
-      font-size: var(--text-xl);
-      font-weight: 600;
-      color: var(--neutral-900);
-    }
-
-    .feedback-dimension-score {
-      font-size: var(--text-sm);
-      font-weight: 600;
-      color: var(--neutral-700);
-      background: var(--neutral-100);
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-
-    .feedback-dimension-summary {
-      font-size: var(--text-base);
-      color: var(--neutral-500);
-      margin-bottom: var(--space-4);
-    }
-
-    .feedback-section-label {
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--neutral-500);
-      margin-bottom: var(--space-2);
-      display: flex;
-      align-items: center;
-      gap: var(--space-1);
-    }
-
-    .feedback-section-label svg {
-      width: 16px;
-      height: 16px;
-      color: var(--neutral-400);
-    }
-
-    .feedback-cards {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      margin-bottom: var(--space-4);
-    }
-
-    .feedback-cards:last-child {
-      margin-bottom: 0;
-    }
-
-    .feedback-more-hint {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      width: fit-content;
-      margin: var(--space-3) auto 0;
-      padding: 10px 16px;
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--blue);
-      background: rgba(0,102,255,0.06);
-      border: 1px solid rgba(0,102,255,0.12);
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .feedback-more-hint:hover {
-      background: rgba(0,102,255,0.1);
-      border-color: rgba(0,102,255,0.2);
-    }
-
-    .feedback-more-hint svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    .feedback-rec-card {
-      background: var(--white);
-      border: 1px solid var(--neutral-200);
-      border-left: 3px solid var(--neutral-300);
-      border-radius: var(--radius-sm);
-      padding: var(--space-3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .feedback-rec-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .feedback-cards.strengths .feedback-rec-card {
-      border-left-color: var(--green);
-      background: linear-gradient(135deg, rgba(16,185,129,0.04) 0%, var(--white) 100%);
-    }
-
-    .feedback-cards.strengths .feedback-rec-score {
-      color: var(--green);
-    }
-
-    .feedback-cards.recommendations .feedback-rec-card {
-      border-left-color: var(--amber);
-      background: linear-gradient(135deg, rgba(245,158,11,0.04) 0%, var(--white) 100%);
-    }
-
-    .feedback-cards.recommendations .feedback-rec-score {
-      color: var(--amber);
-    }
-
-    .feedback-rec-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: var(--space-2);
-      margin-bottom: 4px;
-    }
-
-    .feedback-rec-title {
-      font-size: var(--text-base);
-      font-weight: 600;
-      color: var(--neutral-900);
-    }
-
-    .feedback-rec-score {
-      font-size: var(--text-sm);
-      font-weight: 600;
-      color: var(--neutral-500);
-      flex-shrink: 0;
-    }
-
-    .feedback-rec-body {
-      font-size: var(--text-base);
-      color: var(--neutral-600);
-      line-height: 1.5;
-    }
-
-    .feedback-preview-cta {
-      text-align: center;
-      margin-top: var(--space-5);
-    }
-
     /* Bento Feedback Preview */
     .bento-preview {
       padding: var(--space-15) var(--space-3);
@@ -777,7 +556,7 @@
     }
 
     .bento-container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -793,29 +572,41 @@
       border: 1px solid var(--neutral-200);
       border-radius: var(--radius-md);
       padding: var(--space-4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .bento-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-color: var(--neutral-300);
+    }
+
+    .bento-card-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .bento-card-stack .bento-card {
+      flex: 1;
     }
 
     /* Dimensions overview card - large, bottom left */
     .bento-card-dimensions {
       grid-column: span 2;
-      padding: var(--space-5);
+      padding: var(--space-4);
     }
 
     .bento-dimensions-header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: var(--space-4);
+      margin-bottom: 18px;
+      padding-top: 3px;
     }
 
     .bento-dimensions-title {
-      font-size: var(--text-lg);
+      font-size: var(--text-xl);
       font-weight: 600;
       color: var(--neutral-900);
     }
@@ -823,37 +614,39 @@
     .bento-dimensions-score {
       display: flex;
       align-items: baseline;
-      gap: 6px;
+      gap: 4px;
     }
 
     .bento-dimensions-score-value {
-      font-size: var(--text-2xl);
+      font-size: var(--text-xl);
       font-weight: 600;
       color: var(--neutral-900);
     }
 
     .bento-dimensions-score-label {
-      font-size: var(--text-sm);
-      color: var(--neutral-500);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      color: var(--neutral-400);
     }
 
     .bento-dimensions-list {
       display: flex;
       flex-direction: column;
-      gap: var(--space-2);
+      justify-content: space-between;
+      flex: 1;
     }
 
     .bento-dimension-row {
       display: grid;
-      grid-template-columns: 140px 1fr 40px;
+      grid-template-columns: 200px 1fr 40px;
       align-items: center;
       gap: var(--space-2);
     }
 
     .bento-dimension-name {
       font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--neutral-700);
+      font-weight: 600;
+      color: var(--neutral-900);
     }
 
     .bento-dimension-bar {
@@ -866,23 +659,28 @@
     .bento-dimension-bar-fill {
       height: 100%;
       border-radius: 4px;
-      background: var(--neutral-900);
       transition: width 0.3s ease;
     }
 
     .bento-dimension-score {
       font-size: var(--text-sm);
       font-weight: 600;
-      color: var(--neutral-600);
       text-align: right;
     }
 
     /* Feedback cards - clean, minimal */
+    .bento-card-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-2);
+      margin-bottom: 12px;
+    }
+
     .bento-card-title {
       font-size: var(--text-lg);
       font-weight: 600;
       color: var(--neutral-900);
-      margin-bottom: 6px;
       line-height: 1.3;
     }
 
@@ -895,15 +693,13 @@
     .bento-card-dimension {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: var(--text-xs);
-      color: var(--neutral-400);
-      margin-top: var(--space-3);
+      gap: 2px;
+      font-size: var(--text-lg);
+      flex-shrink: 0;
     }
 
     .bento-card-score-badge {
       font-weight: 600;
-      color: var(--neutral-900);
     }
 
     .bento-card-score-scale {
@@ -911,12 +707,35 @@
       color: var(--neutral-400);
     }
 
+    /* Score color encoding */
+    .score-high { color: var(--green); }
+    .score-mid { color: var(--amber); }
+    .score-low { color: #EF4444; }
+
+    .bar-high { background: var(--green); }
+    .bar-mid { background: var(--amber); }
+    .bar-low { background: #EF4444; }
+
     .bento-more-text {
-      text-align: center;
-      margin-top: var(--space-5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: var(--space-3) auto 0;
+      padding: 10px 20px;
       font-size: var(--text-sm);
       font-weight: 500;
-      color: var(--neutral-500);
+      color: var(--blue);
+      background: rgba(0, 102, 255, 0.06);
+      border-radius: 100px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .bento-more-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
     }
 
     @media (max-width: 900px) {
@@ -927,19 +746,30 @@
       .bento-card-dimensions {
         grid-column: span 2;
       }
+
+      .bento-card-stack {
+        gap: 16px;
+      }
     }
 
     @media (max-width: 600px) {
       .bento-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
       }
 
       .bento-card-dimensions {
         grid-column: span 1;
+        margin-top: 8px;
+        border-color: var(--neutral-300);
       }
 
       .bento-dimension-row {
-        grid-template-columns: 100px 1fr 36px;
+        grid-template-columns: 130px 1fr 36px;
+      }
+
+      .bento-dimension-name {
+        font-size: 12px;
       }
     }
 
@@ -1151,6 +981,22 @@
       font-weight: 500;
     }
 
+    .testimonial-outcome {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: var(--space-2);
+    }
+
+    .testimonial-outcome svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
     /* Accelerator proof instead of logo bar */
     .accelerator-proof {
       text-align: center;
@@ -1214,8 +1060,13 @@
     .pricing-label {
       font-size: var(--text-sm);
       font-weight: 500;
-      color: var(--neutral-600);
+      color: var(--neutral-500);
       margin-bottom: var(--space-1);
+    }
+
+    .pricing-anchor {
+      color: var(--neutral-900);
+      font-weight: 600;
     }
 
     .pricing-price {
@@ -1592,9 +1443,14 @@
     <div class="hero-container">
       <div class="hero-text">
         <h1 class="animate-fade-in-blur delay-1">Every VC knows why they passed on you. <span class="headline-emphasis">You don't.</span></h1>
-        <p class="hero-subtitle animate-fade-in-blur delay-2">PitchFit is the pitch analyst for pre-seed founders, built on patterns from hundreds of VC partner meetings. Fix what's costing you term sheets before you burn your best intros.</p>
+        <p class="hero-subtitle animate-fade-in-blur delay-2">PitchFit is the pitch analyst for pre-seed founders. It analyzes your deck, your delivery, and the story between them — built on what VCs actually say in partner meetings.</p>
         <div class="hero-cta-group animate-fade-in-blur delay-3">
           <a href="#pricing" class="btn-primary btn-primary-large">Analyze My Pitch</a>
+          <p class="hero-proof">Fix what's costing you term sheets before you burn your best intros.</p>
+          <p class="hero-proof">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Full analysis in minutes, not days
+          </p>
         </div>
       </div>
 
@@ -1629,510 +1485,116 @@
       </div>
     </div>
   </section>
-
-  <!-- Feedback Preview -->
-  <section class="feedback-preview">
-    <div class="feedback-preview-container">
-      <div class="feedback-preview-header">
-        <h2 class="feedback-preview-title">See what investors see</h2>
-        <p class="feedback-preview-subtitle">Your pitch evaluated across 8 dimensions — each one scored with specific fixes.</p>
-      </div>
-
-      <div class="feedback-tabs" role="tablist">
-        <button class="feedback-tab active" role="tab" aria-selected="true" data-tab="problem-solution">Problem-Solution</button>
-        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="market">Market</button>
-        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="business-model">Business Model</button>
-        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="team">Team</button>
-        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="traction">Traction</button>
-        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="financials">Financials</button>
-        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="visuals">Visuals</button>
-        <button class="feedback-tab" role="tab" aria-selected="false" data-tab="delivery">Delivery</button>
-      </div>
-
-      <div class="feedback-panel active" data-panel="problem-solution">
-        <div class="feedback-dimension-header">
-          <h3 class="feedback-dimension-title">Problem-Solution Fit</h3>
-          <span class="feedback-dimension-score">7.4</span>
-        </div>
-        <p class="feedback-dimension-summary">Strong problem identification with room to strengthen solution specificity.</p>
-        
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Strengths
-        </p>
-        <div class="feedback-cards strengths">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Problem Definition Clarity</h4>
-              <span class="feedback-rec-score">8.6</span>
-            </div>
-            <p class="feedback-rec-body">Ember's pain point is specific and quantified: independent restaurants lose 4-10% of revenue to food waste. Your personal restaurant experience makes this viscerally credible.</p>
-          </div>
-        </div>
-
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-          Recommendations
-        </p>
-        <div class="feedback-cards recommendations">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Solution Validation</h4>
-              <span class="feedback-rec-score">6.4</span>
-            </div>
-            <p class="feedback-rec-body">You've validated the problem extensively, but evidence that Ember's specific approach resolves it is thin. Pilot results or before/after metrics would strengthen this.</p>
-          </div>
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Unique Value Proposition</h4>
-              <span class="feedback-rec-score">6.8</span>
-            </div>
-            <p class="feedback-rec-body">How is Ember different from MarketMan or BlueCart? Your positioning against existing tools needs sharper differentiation beyond "built by a restaurant owner."</p>
-          </div>
-        </div>
-
-        <div class="feedback-more-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-          2 more criteria evaluated in full analysis
-        </div>
-      </div>
-
-      <div class="feedback-panel" data-panel="market">
-        <div class="feedback-dimension-header">
-          <h3 class="feedback-dimension-title">Market Opportunity</h3>
-          <span class="feedback-dimension-score">5.8</span>
-        </div>
-        <p class="feedback-dimension-summary">Market sizing needs bottoms-up validation to build investor confidence.</p>
-        
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Strengths
-        </p>
-        <div class="feedback-cards strengths">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Market Growth Potential</h4>
-              <span class="feedback-rec-score">7.2</span>
-            </div>
-            <p class="feedback-rec-body">Restaurant tech adoption is accelerating post-pandemic. Your timing narrative around labor shortages forcing automation is credible and well-documented.</p>
-          </div>
-        </div>
-
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-          Recommendations
-        </p>
-        <div class="feedback-cards recommendations">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">TAM/SAM/SOM Analysis</h4>
-              <span class="feedback-rec-score">4.9</span>
-            </div>
-            <p class="feedback-rec-body">The $12B restaurant software TAM cites an IBISWorld report. Investors want your math: 660K US independent restaurants × $200/mo × 12 = what addressable number for Ember specifically?</p>
-          </div>
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Competitive Landscape</h4>
-              <span class="feedback-rec-score">5.4</span>
-            </div>
-            <p class="feedback-rec-body">MarketMan, BlueCart, and Toast all play in adjacent spaces. Your competitive matrix exists but doesn't explain why Ember wins against well-funded incumbents.</p>
-          </div>
-        </div>
-
-        <div class="feedback-more-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-          2 more criteria evaluated in full analysis
-        </div>
-      </div>
-
-      <div class="feedback-panel" data-panel="business-model">
-        <div class="feedback-dimension-header">
-          <h3 class="feedback-dimension-title">Business Model Viability</h3>
-          <span class="feedback-dimension-score">5.9</span>
-        </div>
-        <p class="feedback-dimension-summary">Clear revenue model with gaps in unit economics understanding.</p>
-        
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Strengths
-        </p>
-        <div class="feedback-cards strengths">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Revenue Model Clarity</h4>
-              <span class="feedback-rec-score">7.4</span>
-            </div>
-            <p class="feedback-rec-body">Ember's $149/month SaaS model with annual discount is clearly articulated. Investors understand this path to recurring revenue immediately.</p>
-          </div>
-        </div>
-
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-          Recommendations
-        </p>
-        <div class="feedback-cards recommendations">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Unit Economics</h4>
-              <span class="feedback-rec-score">4.8</span>
-            </div>
-            <p class="feedback-rec-body">No mention of CAC, LTV, or payback period. Even rough estimates show investors you understand the economics of scaling Ember.</p>
-          </div>
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Scalability</h4>
-              <span class="feedback-rec-score">5.6</span>
-            </div>
-            <p class="feedback-rec-body">How does Ember's cost structure change at 100 vs 1,000 vs 10,000 restaurants? Show that growth doesn't require proportional cost increases.</p>
-          </div>
-        </div>
-
-        <div class="feedback-more-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-          2 more criteria evaluated in full analysis
-        </div>
-      </div>
-
-      <div class="feedback-panel" data-panel="team">
-        <div class="feedback-dimension-header">
-          <h3 class="feedback-dimension-title">Team Credibility</h3>
-          <span class="feedback-dimension-score">8.1</span>
-        </div>
-        <p class="feedback-dimension-summary">Exceptional founder-market fit with authentic problem understanding.</p>
-        
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Strengths
-        </p>
-        <div class="feedback-cards strengths">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Relevant Experience</h4>
-              <span class="feedback-rec-score">8.9</span>
-            </div>
-            <p class="feedback-rec-body">Running a restaurant that failed partly due to inventory waste, then validating Ember door-to-door with 40+ owners—this is rare, authentic founder-market fit.</p>
-          </div>
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Complementary Skills</h4>
-              <span class="feedback-rec-score">8.4</span>
-            </div>
-            <p class="feedback-rec-body">Operations expertise paired with your co-founder's ML background covers both sides of a predictive inventory product effectively.</p>
-          </div>
-        </div>
-
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-          Recommendations
-        </p>
-        <div class="feedback-cards recommendations">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Advisory Support</h4>
-              <span class="feedback-rec-score">6.8</span>
-            </div>
-            <p class="feedback-rec-body">No advisors mentioned. A restaurant group operator or Toast/Square alumni would add credibility and open distribution channels.</p>
-          </div>
-        </div>
-
-        <div class="feedback-more-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-          2 more criteria evaluated in full analysis
-        </div>
-      </div>
-
-      <div class="feedback-panel" data-panel="traction">
-        <div class="feedback-dimension-header">
-          <h3 class="feedback-dimension-title">Traction Evidence</h3>
-          <span class="feedback-dimension-score">5.4</span>
-        </div>
-        <p class="feedback-dimension-summary">Strong customer discovery but commercial validation is thin.</p>
-        
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Strengths
-        </p>
-        <div class="feedback-cards strengths">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Customer Validation</h4>
-              <span class="feedback-rec-score">7.1</span>
-            </div>
-            <p class="feedback-rec-body">40+ customer interviews with documented pain points. Three restaurants actively testing the beta. This groundwork demonstrates commitment to understanding the market.</p>
-          </div>
-        </div>
-
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-          Recommendations
-        </p>
-        <div class="feedback-cards recommendations">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Revenue Growth</h4>
-              <span class="feedback-rec-score">4.2</span>
-            </div>
-            <p class="feedback-rec-body">"Strong early interest" is too vague. Even $500/month from pilot customers or signed LOIs would dramatically strengthen Ember's traction story.</p>
-          </div>
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Market Response</h4>
-              <span class="feedback-rec-score">5.1</span>
-            </div>
-            <p class="feedback-rec-body">No testimonials, case studies, or quantified results from beta users. "Restaurant X reduced waste by Y%" would be powerful proof.</p>
-          </div>
-        </div>
-
-        <div class="feedback-more-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-          2 more criteria evaluated in full analysis
-        </div>
-      </div>
-
-      <div class="feedback-panel" data-panel="financials">
-        <div class="feedback-dimension-header">
-          <h3 class="feedback-dimension-title">Financial Projections</h3>
-          <span class="feedback-dimension-score">4.8</span>
-        </div>
-        <p class="feedback-dimension-summary">Weak financial modeling requiring significant development for investor credibility.</p>
-        
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Strengths
-        </p>
-        <div class="feedback-cards strengths">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Capital Efficiency</h4>
-              <span class="feedback-rec-score">6.2</span>
-            </div>
-            <p class="feedback-rec-body">Clear understanding of Ember's $8K/month burn rate and 18-month runway target. This basic financial discipline is a positive signal at pre-seed.</p>
-          </div>
-        </div>
-
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-          Recommendations
-        </p>
-        <div class="feedback-cards recommendations">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Model Quality</h4>
-              <span class="feedback-rec-score">4.2</span>
-            </div>
-            <p class="feedback-rec-body">Revenue projections lack bottoms-up assumptions. Build models showing customer acquisition rates, churn, and expansion revenue for Ember specifically.</p>
-          </div>
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Funding Request Clarity</h4>
-              <span class="feedback-rec-score">4.6</span>
-            </div>
-            <p class="feedback-rec-body">No clear ask amount or use of proceeds. "We're raising $500K to reach 50 paying restaurants" links capital to specific milestones investors can evaluate.</p>
-          </div>
-        </div>
-
-        <div class="feedback-more-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-          2 more criteria evaluated in full analysis
-        </div>
-      </div>
-
-      <div class="feedback-panel" data-panel="visuals">
-        <div class="feedback-dimension-header">
-          <h3 class="feedback-dimension-title">Visual Design</h3>
-          <span class="feedback-dimension-score">7.6</span>
-        </div>
-        <p class="feedback-dimension-summary">Clean presentation that builds credibility through attention to detail.</p>
-        
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Strengths
-        </p>
-        <div class="feedback-cards strengths">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Information Architecture</h4>
-              <span class="feedback-rec-score">8.2</span>
-            </div>
-            <p class="feedback-rec-body">Logical slide flow from problem → solution → market → team → ask. Transitions feel natural and the narrative builds momentum.</p>
-          </div>
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Design Consistency</h4>
-              <span class="feedback-rec-score">7.8</span>
-            </div>
-            <p class="feedback-rec-body">Consistent color palette and spacing throughout Ember's deck. This looks like a company that pays attention to detail.</p>
-          </div>
-        </div>
-
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-          Recommendations
-        </p>
-        <div class="feedback-cards recommendations">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Professional Polish</h4>
-              <span class="feedback-rec-score">6.9</span>
-            </div>
-            <p class="feedback-rec-body">Three typefaces is one too many. Tighten to two (one for headlines, one for body) for a more polished, cohesive look.</p>
-          </div>
-        </div>
-
-        <div class="feedback-more-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-          2 more criteria evaluated in full analysis
-        </div>
-      </div>
-
-      <div class="feedback-panel" data-panel="delivery">
-        <div class="feedback-dimension-header">
-          <h3 class="feedback-dimension-title">Delivery Excellence</h3>
-          <span class="feedback-dimension-score">5.2</span>
-        </div>
-        <p class="feedback-dimension-summary">Strong narrative undermined by verbal delivery inconsistencies.</p>
-        
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Strengths
-        </p>
-        <div class="feedback-cards strengths">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Storytelling</h4>
-              <span class="feedback-rec-score">7.8</span>
-            </div>
-            <p class="feedback-rec-body">Opening with your restaurant closure and the moment you realized inventory was killing margins—this personal narrative earns emotional investment immediately.</p>
-          </div>
-        </div>
-
-        <p class="feedback-section-label">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
-          Recommendations
-        </p>
-        <div class="feedback-cards recommendations">
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Filler Words</h4>
-              <span class="feedback-rec-score">4.2</span>
-            </div>
-            <p class="feedback-rec-body">"Um" and "like" appear 23 times in 4 minutes (5.75/min), well above the 1-2/min acceptable threshold. Most occur during competitive landscape—practice this section.</p>
-          </div>
-          <div class="feedback-rec-card">
-            <div class="feedback-rec-header">
-              <h4 class="feedback-rec-title">Vocal Delivery</h4>
-              <span class="feedback-rec-score">5.4</span>
-            </div>
-            <p class="feedback-rec-body">Speaking pace drops from 155 WPM in opening to 128 WPM during financials. Maintain energy through the ask—this is where you close.</p>
-          </div>
-        </div>
-
-        <div class="feedback-more-hint">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-          4 more criteria evaluated in full analysis
-        </div>
-      </div>
-
-      <div class="feedback-preview-cta">
-        <a href="#pricing" class="btn-secondary">
-          Get your analysis
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- Bento Feedback Preview (Alternative) -->
   <section class="bento-preview">
     <div class="bento-container">
       <div class="section-header">
         <span class="section-label">What you'll get</span>
         <h2 class="section-title">See what investors see</h2>
+        <p class="section-subtitle" style="margin-top: 12px; font-size: var(--text-base); color: var(--neutral-500); line-height: 1.6;">A sample from a real founder's deck and video analysis — yours will be ready in minutes.</p>
       </div>
 
       <div class="bento-grid">
         <!-- Row 1: 3 feedback cards -->
         <div class="bento-card">
-          <h3 class="bento-card-title">Founder-Market Fit</h3>
-          <p class="bento-card-body">Authentic problem understanding from running a restaurant that failed due to inventory waste.</p>
-          <p class="bento-card-dimension"><span class="bento-card-score-badge">8.9</span><span class="bento-card-score-scale">/10</span></p>
+          <div class="bento-card-header">
+            <h3 class="bento-card-title">Founder-Market Fit</h3>
+            <p class="bento-card-dimension"><span class="bento-card-score-badge score-high">8.9</span><span class="bento-card-score-scale">/10</span></p>
+          </div>
+          <p class="bento-card-body">Your 30-restaurant track record creates unmatched credibility and deep understanding in this space. Leverage this by emphasizing operational expertise that competitors lack throughout investor conversations.</p>
         </div>
 
         <div class="bento-card">
-          <h3 class="bento-card-title">Problem Clarity</h3>
-          <p class="bento-card-body">Pain point is specific and quantified: 4-10% of revenue lost to food waste.</p>
-          <p class="bento-card-dimension"><span class="bento-card-score-badge">8.6</span><span class="bento-card-score-scale">/10</span></p>
+          <div class="bento-card-header">
+            <h3 class="bento-card-title">Vocal Delivery</h3>
+            <p class="bento-card-dimension"><span class="bento-card-score-badge score-mid">6.0</span><span class="bento-card-score-scale">/10</span></p>
+          </div>
+          <p class="bento-card-body">Your delivery pace of ~180 WPM is too fast for investor comprehension. Slow to 150-160 WPM during financials and competitive landscape to let key points land. Cut hedging language and use declarative statements to project authority.</p>
         </div>
 
         <div class="bento-card">
-          <h3 class="bento-card-title">Revenue Evidence</h3>
-          <p class="bento-card-body">"Strong early interest" is vague. Even $500/mo from pilots strengthens your story.</p>
-          <p class="bento-card-dimension"><span class="bento-card-score-badge">4.2</span><span class="bento-card-score-scale">/10</span></p>
+          <div class="bento-card-header">
+            <h3 class="bento-card-title">TAM/SAM/SOM Analysis</h3>
+            <p class="bento-card-dimension"><span class="bento-card-score-badge score-low">4.9</span><span class="bento-card-score-scale">/10</span></p>
+          </div>
+          <p class="bento-card-body">Your $150 billion TAM figure lacks credible sourcing and your path to $100 million oversimplifies market capture assumptions. Research third-party reports on commercial kitchen rental or ghost kitchen markets to provide credible bottom-up market sizing.</p>
         </div>
 
         <!-- Row 2: Dimensions overview (2 cols) + 1 feedback card -->
         <div class="bento-card bento-card-dimensions">
           <div class="bento-dimensions-header">
-            <h3 class="bento-dimensions-title">8-Dimension Breakdown</h3>
+            <h3 class="bento-dimensions-title">Overall Score</h3>
             <div class="bento-dimensions-score">
               <span class="bento-dimensions-score-value">6.8</span>
-              <span class="bento-dimensions-score-label">overall</span>
+              <span class="bento-dimensions-score-label">/10</span>
             </div>
           </div>
           <div class="bento-dimensions-list">
             <div class="bento-dimension-row">
-              <span class="bento-dimension-name">Team</span>
-              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 81%"></div></div>
-              <span class="bento-dimension-score">8.1</span>
+              <span class="bento-dimension-name">Team Credibility</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill bar-high" style="width: 81%"></div></div>
+              <span class="bento-dimension-score score-high">8.1</span>
             </div>
             <div class="bento-dimension-row">
-              <span class="bento-dimension-name">Problem-Solution</span>
-              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 74%"></div></div>
-              <span class="bento-dimension-score">7.4</span>
+              <span class="bento-dimension-name">Visual Design &amp; Data</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill bar-high" style="width: 76%"></div></div>
+              <span class="bento-dimension-score score-high">7.6</span>
             </div>
             <div class="bento-dimension-row">
-              <span class="bento-dimension-name">Visuals</span>
-              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 76%"></div></div>
-              <span class="bento-dimension-score">7.6</span>
+              <span class="bento-dimension-name">Problem-Solution Fit</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill bar-high" style="width: 74%"></div></div>
+              <span class="bento-dimension-score score-high">7.4</span>
             </div>
             <div class="bento-dimension-row">
-              <span class="bento-dimension-name">Business Model</span>
-              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 59%"></div></div>
-              <span class="bento-dimension-score">5.9</span>
+              <span class="bento-dimension-name">Business Model Viability</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill bar-mid" style="width: 59%"></div></div>
+              <span class="bento-dimension-score score-mid">5.9</span>
             </div>
             <div class="bento-dimension-row">
-              <span class="bento-dimension-name">Market</span>
-              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 58%"></div></div>
-              <span class="bento-dimension-score">5.8</span>
+              <span class="bento-dimension-name">Market Opportunity</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill bar-mid" style="width: 58%"></div></div>
+              <span class="bento-dimension-score score-mid">5.8</span>
             </div>
             <div class="bento-dimension-row">
-              <span class="bento-dimension-name">Traction</span>
-              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 54%"></div></div>
-              <span class="bento-dimension-score">5.4</span>
+              <span class="bento-dimension-name">Traction Evidence</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill bar-mid" style="width: 54%"></div></div>
+              <span class="bento-dimension-score score-mid">5.4</span>
             </div>
             <div class="bento-dimension-row">
-              <span class="bento-dimension-name">Delivery</span>
-              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 52%"></div></div>
-              <span class="bento-dimension-score">5.2</span>
+              <span class="bento-dimension-name">Delivery &amp; Communication</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill bar-mid" style="width: 52%"></div></div>
+              <span class="bento-dimension-score score-mid">5.2</span>
             </div>
             <div class="bento-dimension-row">
-              <span class="bento-dimension-name">Financials</span>
-              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill" style="width: 48%"></div></div>
-              <span class="bento-dimension-score">4.8</span>
+              <span class="bento-dimension-name">Financial Projections</span>
+              <div class="bento-dimension-bar"><div class="bento-dimension-bar-fill bar-low" style="width: 48%"></div></div>
+              <span class="bento-dimension-score score-low">4.8</span>
             </div>
           </div>
         </div>
 
-        <div class="bento-card">
-          <h3 class="bento-card-title">Market Sizing</h3>
-          <p class="bento-card-body">The $12B TAM cites IBISWorld. Investors want your math: how many restaurants × your price?</p>
-          <p class="bento-card-dimension"><span class="bento-card-score-badge">4.9</span><span class="bento-card-score-scale">/10</span></p>
+        <div class="bento-card-stack">
+          <div class="bento-card">
+            <div class="bento-card-header">
+              <h3 class="bento-card-title">Revenue Growth</h3>
+              <p class="bento-card-dimension"><span class="bento-card-score-badge score-low">4.2</span><span class="bento-card-score-scale">/10</span></p>
+            </div>
+            <p class="bento-card-body">While you mention generating early revenue, provide specific revenue figures, growth trajectory, or booking frequency to demonstrate business momentum and scalability.</p>
+          </div>
+          <div class="bento-card">
+            <div class="bento-card-header">
+              <h3 class="bento-card-title">Competitive Positioning</h3>
+              <p class="bento-card-dimension"><span class="bento-card-score-badge score-high">8.2</span><span class="bento-card-score-scale">/10</span></p>
+            </div>
+            <p class="bento-card-body">Your niche focus on independent operators is a genuine moat — enterprise kitchen platforms won't downmarket to serve this segment. Lead with this in investor conversations to preempt the "why won't Toast just build this?" objection.</p>
+          </div>
         </div>
       </div>
 
-      <p class="bento-more-text">+42 more findings in full analysis</p>
+      <div class="bento-more-container">
+        <span class="bento-more-text">+42 more findings in full analysis</span>
+        <a href="#pricing" class="btn-primary">Analyze My Pitch</a>
+      </div>
     </div>
   </section>
 
@@ -2201,8 +1663,12 @@
           </div>
         </div>
       </div>
-      <div class="testimonial">
+      <div class="testimonial testimonial-featured">
         <p class="testimonial-quote">"Clear, actionable, and more than I was expecting. This is the kind of feedback that sharpens the deck."</p>
+        <p class="testimonial-outcome">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Raised pre-seed 8 weeks later
+        </p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
             <img src="images/james_canopycloud.jpeg" alt="James Marks">
@@ -2240,7 +1706,6 @@
     </div>
 
     <div class="pricing-card">
-      <span class="pricing-badge">Founding Member Pricing</span>
       <p class="pricing-label">Your first pitch analysis</p>
       <p class="pricing-price">$49</p>
       <p class="pricing-price-note">One-time payment</p>
@@ -2412,26 +1877,5 @@
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script>
-    // Feedback tabs
-    document.querySelectorAll('.feedback-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Update tabs
-        document.querySelectorAll('.feedback-tab').forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        
-        // Update panels
-        const targetPanel = tab.dataset.tab;
-        document.querySelectorAll('.feedback-panel').forEach(p => {
-          p.classList.remove('active');
-        });
-        document.querySelector(`[data-panel="${targetPanel}"]`).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
