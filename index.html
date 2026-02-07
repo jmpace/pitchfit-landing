@@ -518,18 +518,6 @@
       position: relative;
     }
 
-    .hero-preview-badge {
-      position: absolute;
-      top: var(--space-2);
-      right: var(--space-2);
-      font-size: var(--text-xs);
-      font-weight: 500;
-      color: var(--blue);
-      background: rgba(0,102,255,0.08);
-      padding: 4px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.02em;
-    }
 
     .hero-preview-score {
       display: flex;
@@ -571,13 +559,12 @@
     .hero-preview-score-verdict {
       font-size: var(--text-base);
       font-weight: 600;
-      color: var(--amber);
+      color: var(--neutral-800);
     }
 
     .hero-preview-card {
-      background: linear-gradient(135deg, rgba(245,158,11,0.06) 0%, rgba(245,158,11,0.02) 100%);
-      border: 1px solid rgba(245,158,11,0.2);
-      border-left: 3px solid var(--amber);
+      background: var(--neutral-50);
+      border: 1px solid var(--neutral-200);
       border-radius: var(--radius-sm);
       padding: var(--space-3);
     }
@@ -600,7 +587,7 @@
     .hero-preview-card-score {
       font-size: var(--text-sm);
       font-weight: 600;
-      color: var(--amber);
+      color: var(--neutral-700);
     }
 
     .hero-preview-card-title {
@@ -2058,7 +2045,6 @@
       <div class="hero-image animate-fade-in-right delay-4">
         <div class="hero-image-wrapper">
           <div class="hero-preview">
-            <span class="hero-preview-badge">Sample Analysis</span>
             <div class="hero-preview-score">
               <div class="hero-preview-score-value">6.2<span class="hero-preview-score-scale">/10</span></div>
               <div class="hero-preview-score-meta">
