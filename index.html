@@ -443,19 +443,14 @@
     .hero-social-proof-text {
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 2px;
     }
 
-    .hero-social-proof-stars {
-      display: flex;
-      gap: 1px;
-    }
-
-    .hero-social-proof-stars svg {
-      width: 14px;
-      height: 14px;
-      color: var(--amber);
-      fill: var(--amber);
+    .hero-social-proof-quote {
+      font-size: 14px;
+      color: var(--neutral-700);
+      font-style: italic;
+      line-height: 1.4;
     }
 
     .hero-social-proof-label {
@@ -479,7 +474,7 @@
       background: linear-gradient(135deg, var(--blue) 0%, rgba(0,102,255,0.4) 100%);
       border-radius: 50%;
       filter: blur(40px);
-      opacity: 0.3;
+      opacity: 0.5;
       z-index: -1;
     }
 
@@ -488,12 +483,12 @@
       position: absolute;
       bottom: 5%;
       left: -8%;
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
       background: linear-gradient(135deg, var(--amber) 0%, rgba(245,158,11,0.4) 100%);
       border-radius: 50%;
       filter: blur(30px);
-      opacity: 0.4;
+      opacity: 0.6;
       z-index: -1;
     }
 
@@ -501,23 +496,13 @@
       position: relative;
       background: var(--white);
       border-radius: var(--radius-md);
-      border: 1px solid var(--neutral-200);
+      border: 1px solid var(--neutral-300);
       box-shadow:
-        0 1px 2px rgba(0,0,0,0.04),
-        0 4px 8px rgba(0,0,0,0.04),
-        0 16px 32px rgba(0,0,0,0.08),
-        0 32px 64px rgba(0,0,0,0.06);
+        0 1px 2px rgba(0,0,0,0.06),
+        0 4px 12px rgba(0,0,0,0.06),
+        0 16px 32px rgba(0,0,0,0.10),
+        0 32px 64px rgba(0,0,0,0.08);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hero-image-wrapper:hover {
-      transform: translateY(-4px);
-      box-shadow:
-        0 1px 2px rgba(0,0,0,0.04),
-        0 4px 8px rgba(0,0,0,0.06),
-        0 20px 40px rgba(0,0,0,0.1),
-        0 40px 80px rgba(0,0,0,0.08);
     }
 
     .hero-product-image {
@@ -529,7 +514,7 @@
     /* Hero Product Preview - Compact */
     .hero-preview {
       padding: var(--space-4);
-      background: linear-gradient(135deg, var(--neutral-50) 0%, var(--white) 100%);
+      background: linear-gradient(135deg, var(--neutral-100) 0%, var(--neutral-50) 100%);
       position: relative;
     }
 
@@ -561,6 +546,13 @@
       color: var(--amber);
       line-height: 1;
       letter-spacing: -0.03em;
+    }
+
+    .hero-preview-score-scale {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--neutral-400);
+      letter-spacing: 0;
     }
 
     .hero-preview-score-meta {
@@ -635,11 +627,12 @@
       justify-content: center;
       gap: 6px;
       margin-top: var(--space-3);
-      padding-top: var(--space-2);
-      border-top: 1px dashed var(--neutral-300);
+      padding: 10px var(--space-2);
+      background: rgba(0,102,255,0.06);
+      border-radius: var(--radius-sm);
       font-size: var(--text-sm);
-      color: var(--amber);
-      font-weight: 500;
+      color: var(--blue);
+      font-weight: 600;
     }
 
     /* Bento Feedback Preview */
@@ -2055,14 +2048,8 @@
               <img src="images/holly_necterine.jpeg" alt="Founder" width="32" height="32" loading="eager">
             </div>
             <div class="hero-social-proof-text">
-              <div class="hero-social-proof-stars">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              </div>
-              <span class="hero-social-proof-label">Loved by early founders</span>
+              <span class="hero-social-proof-quote">"Clear and actionable feedback that sharpens the pitch"</span>
+              <span class="hero-social-proof-label">James Marks, Founder</span>
             </div>
           </div>
         </div>
@@ -2073,10 +2060,10 @@
           <div class="hero-preview">
             <span class="hero-preview-badge">Sample Analysis</span>
             <div class="hero-preview-score">
-              <div class="hero-preview-score-value">6.8</div>
+              <div class="hero-preview-score-value">6.2<span class="hero-preview-score-scale">/10</span></div>
               <div class="hero-preview-score-meta">
                 <span class="hero-preview-score-label">Readiness Score</span>
-                <span class="hero-preview-score-verdict">Above average</span>
+                <span class="hero-preview-score-verdict">Average</span>
               </div>
             </div>
 
@@ -2087,7 +2074,7 @@
               </div>
               <p class="hero-preview-card-title">Insufficient market size validation.</p>
               <p class="hero-preview-card-body">
-                Your TAM claims <strong>lack third-party sources</strong> and don't demonstrate how you calculated your addressable market within this broader opportunity. This creates investor skepticism about market understanding and realistic opportunity assessment.
+                Your TAM claims <strong>lack third-party sources</strong> which creates investor skepticism about market understanding and realistic opportunity assessment.
               </p>
             </div>
 
@@ -2554,10 +2541,10 @@
       <p class="pricing-price-note">One-time payment</p>
 
       <ul class="pricing-features">
-        <li>Full 8-dimension breakdown</li>
-        <li>Deck and delivery analyzed together</li>
-        <li>Top 3 strengths, top 3 fixes</li>
-        <li>Ready / Almost There / Needs Work verdict</li>
+        <li>Investment readiness verdict</li>
+        <li>Top 3 strengths and top 3 fixes</li>
+        <li>Deck and delivery scored together</li>
+        <li>Full breakdown across 8 investor dimensions</li>
       </ul>
 
       <div class="pricing-cta">
