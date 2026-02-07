@@ -1238,7 +1238,7 @@
     .feature-card:nth-child(5) .feature-card-title { color: var(--blue); }
 
     .feature-card-description {
-      font-size: var(--text-sm);
+      font-size: var(--text-base);
       color: var(--neutral-500);
       line-height: 1.6;
     }
@@ -1281,14 +1281,14 @@
     }
 
     .feature-secondary-title {
-      font-size: var(--text-sm);
+      font-size: var(--text-base);
       font-weight: 600;
       color: var(--neutral-900);
       line-height: 1.3;
     }
 
     .feature-secondary-description {
-      font-size: 13px;
+      font-size: var(--text-base);
       color: var(--neutral-500);
       line-height: 1.5;
     }
@@ -2446,12 +2446,12 @@
                   <line x1="0" y1="30" x2="280" y2="30" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
                   <line x1="0" y1="60" x2="280" y2="60" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
                   <line x1="0" y1="90" x2="280" y2="90" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
-                  <path d="M0,96 L40,88 L80,82 L120,70 L160,58 L200,42 L240,32 L280,18 L280,120 L0,120 Z" fill="url(#progressGradient)" opacity="0.3"/>
-                  <path d="M0,96 L40,88 L80,82 L120,70 L160,58 L200,42 L240,32 L280,18" stroke="#0066FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                  <circle cx="280" cy="18" r="4" fill="#0066FF"/>
-                  <circle cx="280" cy="18" r="7" fill="none" stroke="rgba(0,102,255,0.3)" stroke-width="2"/>
+                  <path d="M0,96 L40,88 L80,82 L120,70 L160,58 L200,42 L240,32 L268,22 L268,120 L0,120 Z" fill="url(#progressGradient)" opacity="0.3"/>
+                  <path d="M0,96 L40,88 L80,82 L120,70 L160,58 L200,42 L240,32 L268,22" stroke="#0066FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  <circle cx="268" cy="22" r="4" fill="#0066FF"/>
+                  <circle cx="268" cy="22" r="7" fill="none" stroke="rgba(0,102,255,0.3)" stroke-width="2"/>
                   <defs>
-                    <linearGradient id="progressGradient" x1="140" y1="18" x2="140" y2="120" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="progressGradient" x1="140" y1="22" x2="140" y2="120" gradientUnits="userSpaceOnUse">
                       <stop stop-color="#0066FF" stop-opacity="0.4"/>
                       <stop offset="1" stop-color="#0066FF" stop-opacity="0"/>
                     </linearGradient>
@@ -2664,6 +2664,33 @@
       </div>
     </div>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Drag-to-scroll for features carousel
+    (function() {
+      var el = document.querySelector('.features-carousel');
+      if (!el) return;
+      var isDown = false, startX, scrollLeft;
+      el.addEventListener('mousedown', function(e) {
+        isDown = true;
+        el.style.scrollSnapType = 'none';
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+      });
+      function endDrag() {
+        if (!isDown) return;
+        isDown = false;
+        el.style.scrollSnapType = '';
+      }
+      el.addEventListener('mouseleave', endDrag);
+      el.addEventListener('mouseup', endDrag);
+      el.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX);
+      });
+    })();
+  </script>
 </body>
 </html>
