@@ -1,5 +1,9 @@
 node_modules/
 screenshots/
+design-review-screenshots/
+review/
+test-results/
 package.json
 package-lock.json
 visual-check.js
+verify-bento.mjs
