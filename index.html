@@ -356,6 +356,55 @@
       box-shadow: 0 6px 20px rgba(0,102,255,0.4);
     }
 
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: var(--space-1);
+    }
+
+    .avatar-stack {
+      display: flex;
+      flex-shrink: 0;
+    }
+
+    .avatar-stack img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-stack img:not(:first-child) {
+      margin-left: -10px;
+    }
+
+    .hero-social-proof-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .hero-social-proof-stars {
+      display: flex;
+      gap: 1px;
+    }
+
+    .hero-social-proof-stars svg {
+      width: 14px;
+      height: 14px;
+      color: var(--amber);
+      fill: var(--amber);
+    }
+
+    .hero-social-proof-label {
+      font-size: 13px;
+      color: var(--neutral-500);
+      line-height: 1.3;
+    }
+
     .hero-proof {
       display: flex;
       align-items: center;
@@ -1939,6 +1988,23 @@
         <p class="hero-subtitle animate-fade-in-blur delay-2">The only pitch analysis that evaluates your deck and your delivery together. Fix what investors will flag before you burn your best intros.</p>
         <div class="hero-cta-group animate-fade-in-blur delay-3">
           <a href="#pricing" class="btn-primary btn-primary-large">Analyze My Pitch</a>
+          <div class="hero-social-proof">
+            <div class="avatar-stack">
+              <img src="images/tim_cinefind.jpeg" alt="Founder" width="32" height="32" loading="eager">
+              <img src="images/james_canopycloud.jpeg" alt="Founder" width="32" height="32" loading="eager">
+              <img src="images/holly_necterine.jpeg" alt="Founder" width="32" height="32" loading="eager">
+            </div>
+            <div class="hero-social-proof-text">
+              <div class="hero-social-proof-stars">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <span class="hero-social-proof-label">Loved by early founders</span>
+            </div>
+          </div>
           <p class="hero-proof">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             Full analysis in minutes, not days
@@ -1963,7 +2029,7 @@
                 <span class="hero-preview-card-dimension">Market</span>
                 <span class="hero-preview-card-score">4.9</span>
               </div>
-              <h4 class="hero-preview-card-title">Insufficient market size validation.</h4>
+              <p class="hero-preview-card-title">Insufficient market size validation.</p>
               <p class="hero-preview-card-body">
                 Your TAM claims <strong>lack third-party sources</strong> and don't demonstrate how you calculated your addressable market within this broader opportunity. This creates investor skepticism about market understanding and realistic opportunity assessment.
               </p>
