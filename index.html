@@ -37,6 +37,86 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this just ChatGPT analyzing my pitch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. PitchFit is built on a proprietary evaluation framework trained on patterns from hundreds of real VC conversations. What investors actually say in partner meetings, not what they tell founders. Generic AI gives you generic feedback. PitchFit tells you where VCs will hesitate and why."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from feedback from my mentor or accelerator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mentors give you their perspective. PitchFit gives you the aggregate perspective: patterns across how investors evaluate pre-seed pitches, what they flag in partner meetings, and what makes them pass. It also catches things mentors are too polite to say, or gaps they've become blind to because they know your story too well. Think of it as a second opinion before your high-stakes meetings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens to my pitch video?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your video is stored securely so you can revisit it alongside your analysis. Useful when you're working through feedback slide by slide. We don't share it with anyone or use it to train models. Your fundraising strategy is your business."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the analysis take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most analyses complete in under 3 minutes. You'll get an email when your report is ready."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I disagree with the feedback?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You might. And that's useful. If you disagree with a specific point, it means you should have a ready answer when an investor raises the same concern. The goal isn't a perfect score. It's walking into your next meeting knowing exactly where pushback will come."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this for pre-seed founders only?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PitchFit is built for pre-seed founders preparing for institutional investor conversations. The evaluation framework, the feedback, and the benchmarks are all calibrated for this stage. Not Series A metrics you can't hit yet, and not angel/friends-and-family rounds where the bar is different. If you're further along, the analysis may still be useful, but you're not who we built this for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I submit again after I revise my pitch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Additional analyses are $19 each. Most founders submit 2–3 times as they refine their pitch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I need to submit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A video of you pitching. This can be a recording of a live pitch, a Loom walking through your deck, or you presenting to camera. We analyze both your content and your delivery, so slides alone won't work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I'm not satisfied with the analysis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Email us. If PitchFit didn't deliver useful, actionable feedback on your pitch, we'll make it right. We're building this for founders who are serious about improving — not collecting $49 from people who feel burned."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -2225,6 +2305,10 @@
     <div class="testimonials-grid">
       <div class="testimonial">
         <p class="testimonial-quote">"I didn't realize the severity of my content gaps until seeing an analysis like this."</p>
+        <p class="testimonial-outcome">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Accepted to top accelerator
+        </p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
             <img src="images/tim_cinefind.jpeg" alt="Timothy Philemon" width="36" height="36" loading="lazy">
@@ -2253,6 +2337,10 @@
       </div>
       <div class="testimonial">
         <p class="testimonial-quote">"Honestly, I'm kind of blown away. The specifics within the recommendations are SO helpful."</p>
+        <p class="testimonial-outcome">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Graduated from a top accelerator
+        </p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
             <img src="images/holly_necterine.jpeg" alt="Holly Sloofman" width="36" height="36" loading="lazy">
@@ -2519,123 +2607,126 @@
   </section>
 
   <!-- FAQ -->
-  <section class="faq">
+  <section class="faq" itemscope itemtype="https://schema.org/FAQPage">
     <div class="faq-container">
       <div class="section-header">
-        <span class="section-label">FAQ</span>
-        <h2 class="section-title">Questions</h2>
+        <h2 class="section-title">FAQ</h2>
       </div>
 
       <p class="faq-subtitle">Everything you need to know before you submit</p>
 
       <div class="faq-list">
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            Is this just ChatGPT analyzing my pitch?
+            <span itemprop="name">Is this just ChatGPT analyzing my pitch?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>No. PitchFit is built on a proprietary evaluation framework trained on patterns from hundreds of real VC conversations. What investors actually say in partner meetings, not what they tell founders. Generic AI gives you generic feedback. PitchFit tells you where VCs will hesitate and why.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">No. PitchFit is built on a proprietary evaluation framework trained on patterns from hundreds of real VC conversations. What investors actually say in partner meetings, not what they tell founders. Generic AI gives you generic feedback. PitchFit tells you where VCs will hesitate and why.</p>
           </div>
         </details>
 
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            How is this different from feedback from my mentor or accelerator?
+            <span itemprop="name">How is this different from feedback from my mentor or accelerator?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>Mentors give you their perspective. PitchFit gives you the aggregate perspective: patterns across how investors evaluate pre-seed pitches, what they flag in partner meetings, and what makes them pass. It also catches things mentors are too polite to say, or gaps they've become blind to because they know your story too well. Think of it as a second opinion before your high-stakes meetings.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Mentors give you their perspective. PitchFit gives you the aggregate perspective: patterns across how investors evaluate pre-seed pitches, what they flag in partner meetings, and what makes them pass. It also catches things mentors are too polite to say, or gaps they've become blind to because they know your story too well. Think of it as a second opinion before your high-stakes meetings.</p>
           </div>
         </details>
 
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            What happens to my pitch video?
+            <span itemprop="name">What happens to my pitch video?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>Your video is stored securely so you can revisit it alongside your analysis. Useful when you're working through feedback slide by slide. We don't share it with anyone or use it to train models. Your fundraising strategy is your business.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Your video is stored securely so you can revisit it alongside your analysis. Useful when you're working through feedback slide by slide. We don't share it with anyone or use it to train models. Your fundraising strategy is your business.</p>
           </div>
         </details>
 
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            How long does the analysis take?
+            <span itemprop="name">How long does the analysis take?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>Most analyses complete in under 3 minutes. You'll get an email when your report is ready.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Most analyses complete in under 3 minutes. You'll get an email when your report is ready.</p>
           </div>
         </details>
 
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            What if I disagree with the feedback?
+            <span itemprop="name">What if I disagree with the feedback?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>You might. And that's useful. If you disagree with a specific point, it means you should have a ready answer when an investor raises the same concern.</p>
-            <p>The goal isn't a perfect score. It's walking into your next meeting knowing exactly where pushback will come.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+              <p>You might. And that's useful. If you disagree with a specific point, it means you should have a ready answer when an investor raises the same concern.</p>
+              <p>The goal isn't a perfect score. It's walking into your next meeting knowing exactly where pushback will come.</p>
+            </div>
           </div>
         </details>
 
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            Is this for pre-seed founders only?
+            <span itemprop="name">Is this for pre-seed founders only?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>PitchFit is built for pre-seed founders preparing for institutional investor conversations. The evaluation framework, the feedback, and the benchmarks are all calibrated for this stage. Not Series A metrics you can't hit yet, and not angel/friends-and-family rounds where the bar is different.</p>
-            <p>If you're further along, the analysis may still be useful, but you're not who we built this for.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+              <p>PitchFit is built for pre-seed founders preparing for institutional investor conversations. The evaluation framework, the feedback, and the benchmarks are all calibrated for this stage. Not Series A metrics you can't hit yet, and not angel/friends-and-family rounds where the bar is different.</p>
+              <p>If you're further along, the analysis may still be useful, but you're not who we built this for.</p>
+            </div>
           </div>
         </details>
 
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            Can I submit again after I revise my pitch?
+            <span itemprop="name">Can I submit again after I revise my pitch?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>Yes. Additional analyses are $19 each. Most founders submit 2–3 times as they refine their pitch.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Yes. Additional analyses are $19 each. Most founders submit 2–3 times as they refine their pitch.</p>
           </div>
         </details>
 
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            What do I need to submit?
+            <span itemprop="name">What do I need to submit?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>A video of you pitching. This can be a recording of a live pitch, a Loom walking through your deck, or you presenting to camera. We analyze both your content and your delivery, so slides alone won't work.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">A video of you pitching. This can be a recording of a live pitch, a Loom walking through your deck, or you presenting to camera. We analyze both your content and your delivery, so slides alone won't work.</p>
           </div>
         </details>
 
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <summary>
-            What if I'm not satisfied with the analysis?
+            <span itemprop="name">What if I'm not satisfied with the analysis?</span>
             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p>Email us. If PitchFit didn't deliver useful, actionable feedback on your pitch, we'll make it right. We're building this for founders who are serious about improving — not collecting $49 from people who feel burned.</p>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">Email us. If PitchFit didn't deliver useful, actionable feedback on your pitch, we'll make it right. We're building this for founders who are serious about improving — not collecting $49 from people who feel burned.</p>
           </div>
         </details>
       </div>
